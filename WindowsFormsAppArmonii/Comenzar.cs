@@ -23,5 +23,15 @@ namespace WindowsFormsAppArmonii
             nuevoFormulario.Show();
             this.Hide();
         }
+
+        private void Comenzar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login nuevoFormulario = new Login();
+                nuevoFormulario.Show();
+                this.Hide();
+            }
+        }
     }
 }

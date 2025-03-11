@@ -47,7 +47,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnComenzar);
+            this.KeyPreview = true;
             this.Name = "Comenzar";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Comenzar_KeyDown);
             this.ResumeLayout(false);
 
         }

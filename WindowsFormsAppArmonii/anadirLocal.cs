@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppArmonii
 {
-    public partial class Usuarios : Form
+    public partial class anadirUsuario : Form
     {
-        public Usuarios()
+        public anadirUsuario()
         {
             InitializeComponent();
         }

@@ -57,6 +57,7 @@
             this.btnCalendar.TabIndex = 0;
             this.btnCalendar.Text = "Calendario";
             this.btnCalendar.UseVisualStyleBackColor = true;
+            this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 
             // btnMusico
             // 
@@ -66,6 +67,7 @@
             this.btnMusico.TabIndex = 0;
             this.btnMusico.Text = "Musico";
             this.btnMusico.UseVisualStyleBackColor = true;
+            this.btnMusico.Click += new System.EventHandler(this.btnMusico_Click);
             // 
             // btnGraficos
             // 

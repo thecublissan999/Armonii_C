@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsAppArmonii.Models;
 
 namespace WindowsFormsAppArmonii
 {
@@ -19,9 +20,47 @@ namespace WindowsFormsAppArmonii
 
         private void btnLogearse_Click(object sender, EventArgs e)
         {
-            Menu nuevoFormulario = new Menu(); // Crea una instancia del segundo formulario
-            nuevoFormulario.Show();
-            this.Close();
+            logearse();
+        }
+
+        private void logearse()
+        {
+            bool correctUser;
+            string correo = tbUser.Text;
+            string contra = tbContraseña.Text;
+            if (correo == "" || contra == "")
+            {
+                MessageBox.Show("El campo no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                UsuarioAdmin xx = UsuarioAdminOrm.SelectLogin(correo);
+                if (xx == null)
+                {
+                    MessageBox.Show("El usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (xx.contrasenya != contra)
+                    {
+                        MessageBox.Show("La contraseña esta equivocada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Menu nuevoFormulario = new Menu();
+                        nuevoFormulario.Show();
+                        this.Close();
+                    }
+                }
+            }
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                logearse() ;
+            }
         }
     }
 }

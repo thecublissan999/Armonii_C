@@ -26,7 +26,21 @@ namespace WindowsFormsAppArmonii
 
         private void btnLocal_Click(object sender, EventArgs e)
         {
-            Usuarios nuevoFormulario = new Usuarios();
+            UsuariosLocal nuevoFormulario = new UsuariosLocal();
+            nuevoFormulario.Show();
+            this.Hide();
+        }
+
+        private void btnMusico_Click(object sender, EventArgs e)
+        {
+            UsuariosMusicos nuevoFormulario = new UsuariosMusicos();
+            nuevoFormulario.Show();
+            this.Hide();
+        }
+
+        private void btnCalendar_Click(object sender, EventArgs e)
+        {
+            Calendario nuevoFormulario = new Calendario();
             nuevoFormulario.Show();
             this.Hide();
         }

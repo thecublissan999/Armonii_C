@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsAppArmonii</RootNamespace>
     <AssemblyName>WindowsFormsAppArmonii</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +56,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="anadirLocal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anadirLocal.Designer.cs">
+      <DependentUpon>anadirLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="anadirMusico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anadirMusico.Designer.cs">
+      <DependentUpon>anadirMusico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendario.Designer.cs">
+      <DependentUpon>Calendario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comenzar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,14 +92,70 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArmoniiEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArmoniiEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArmoniiEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArmoniiEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArmoniiEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Evento.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventosOrm.cs" />
+    <Compile Include="Models\Local.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mensaje.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Musico.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MusicoOrm.cs" />
+    <Compile Include="Models\Orm.cs" />
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioAdmin.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioAdminOrm.cs" />
+    <Compile Include="Models\UsuarioOrm.cs" />
+    <Compile Include="Models\Valoracion.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuarios.cs">
+    <Compile Include="UsuariosLocal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuarios.Designer.cs">
-      <DependentUpon>Usuarios.cs</DependentUpon>
+    <Compile Include="UsuariosLocal.Designer.cs">
+      <DependentUpon>UsuariosLocal.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuariosMusicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsuariosMusicos.Designer.cs">
+      <DependentUpon>UsuariosMusicos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="anadirLocal.resx">
+      <DependentUpon>anadirLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="anadirMusico.resx">
+      <DependentUpon>anadirMusico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendario.resx">
+      <DependentUpon>Calendario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comenzar.resx">
       <DependentUpon>Comenzar.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,10 +173,34 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Usuarios.resx">
-      <DependentUpon>Usuarios.cs</DependentUpon>
+    <EmbeddedResource Include="UsuariosLocal.resx">
+      <DependentUpon>UsuariosLocal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsuariosMusicos.resx">
+      <DependentUpon>UsuariosMusicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\ArmoniiEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArmoniiEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ArmoniiEntities.edmx.diagram">
+      <DependentUpon>ArmoniiEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Evento.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.EventosOrm+EventoConMusico.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Local.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Mensaje.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Musico.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.MusicoOrm.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Orm.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Usuario.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm+UsuarioLocal.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm+UsuarioMusico.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Valoracion.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +213,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ArmoniiEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArmoniiEntities.Context.cs</LastGenOutput>
+      <DependentUpon>ArmoniiEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ArmoniiEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArmoniiEntities.edmx</DependentUpon>
+      <LastGenOutput>ArmoniiEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
