@@ -22,9 +22,11 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="tipo_local" Type="varchar" MaxLength="100" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="imagen" Type="text" />
           <Property Name="horarioApertura" Type="time" Precision="7" />
           <Property Name="horarioCierre" Type="time" Precision="7" />
           <Property Name="idUsuario" Type="int" />
@@ -44,11 +46,14 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="nombreArtistico" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="apodo" Type="varchar" MaxLength="100" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
           <Property Name="genero" Type="varchar" MaxLength="50" />
+          <Property Name="generoMusical" Type="varchar" MaxLength="50" />
           <Property Name="edad" Type="int" />
           <Property Name="biografia" Type="text" />
+          <Property Name="imagen" Type="text" />
           <Property Name="idUsuario" Type="int" />
         </EntityType>
         <EntityType Name="Usuario">
@@ -279,6 +284,8 @@
           <NavigationProperty Name="Valoracion" Relationship="Self.FK_Valoracion_UsuarioLocal" FromRole="Local" ToRole="Valoracion" />
           <Property Name="idUsuario" Type="Int32" />
           <NavigationProperty Name="Usuario1" Relationship="ArmoniiModel.FK_Local_Usuario1" FromRole="Local" ToRole="Usuario" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Mensaje">
           <Key>
@@ -298,7 +305,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="nombreArtistico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="biografia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Evento" Relationship="Self.FK_Evento_Musico" FromRole="Musico" ToRole="Evento" />
@@ -307,6 +313,10 @@
           <Property Name="edad" Type="Int32" />
           <Property Name="idUsuario" Type="Int32" />
           <NavigationProperty Name="Usuario1" Relationship="ArmoniiModel.FK_Musico_Usuario1" FromRole="Musico" ToRole="Usuario" />
+          <Property Name="apodo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="generoMusical" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -566,6 +576,8 @@
           <EntitySetMapping Name="Local">
             <EntityTypeMapping TypeName="ArmoniiModel.Local">
               <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
@@ -590,10 +602,13 @@
           <EntitySetMapping Name="Musico">
             <EntityTypeMapping TypeName="ArmoniiModel.Musico">
               <MappingFragment StoreEntitySet="Musico">
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="generoMusical" ColumnName="generoMusical" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="apodo" ColumnName="apodo" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="edad" ColumnName="edad" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombreArtistico" ColumnName="nombreArtistico" />
                 <ScalarProperty Name="genero" ColumnName="genero" />
                 <ScalarProperty Name="biografia" ColumnName="biografia" />
               </MappingFragment>

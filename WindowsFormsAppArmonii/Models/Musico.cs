@@ -22,11 +22,14 @@ namespace WindowsFormsAppArmonii.Models
         }
     
         public int id { get; set; }
-        public string nombreArtistico { get; set; }
         public string genero { get; set; }
         public string biografia { get; set; }
         public Nullable<int> edad { get; set; }
         public Nullable<int> idUsuario { get; set; }
+        public string apodo { get; set; }
+        public string apellido { get; set; }
+        public string generoMusical { get; set; }
+        public string imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento> Evento { get; set; }

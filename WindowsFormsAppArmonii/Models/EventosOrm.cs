@@ -42,7 +42,6 @@ namespace WindowsFormsAppArmonii.Models
                                      nombre = e.nombre,
                                      fecha = e.fecha,
                                      descripcion = e.descripcion,
-                                     nombreArtistico = m.nombreArtistico,
                                      nombreLocal = u.nombre
                                  }).ToList();
 

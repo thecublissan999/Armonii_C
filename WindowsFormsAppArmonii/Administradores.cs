@@ -7,34 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsAppArmonii.Models;
 
 namespace WindowsFormsAppArmonii
 {
-    public partial class UsuariosMusicos : Form
+    public partial class Administradores : Form
     {
-        public UsuariosMusicos()
+        public Administradores()
         {
             InitializeComponent();
-            bindingSource1.DataSource = UsuarioOrm.ObtenerUsuarioMusico();
+            bsAdmin.DataSource = Models.AdminOrm.SelectAll();
         }
 
         private void btnatras_Click(object sender, EventArgs e)
         {
+
             Menu nuevoFormulario = new Menu();
             nuevoFormulario.Show();
             this.Close();
         }
 
-        private void btnAnadir_Click(object sender, EventArgs e)
-        {
-            anadirMusico nuevoFormulario = new anadirMusico();
-            nuevoFormulario.Show();
-        }
-
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

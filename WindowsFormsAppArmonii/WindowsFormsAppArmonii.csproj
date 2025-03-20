@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administradores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administradores.Designer.cs">
+      <DependentUpon>Administradores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="anadirAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anadirAdmin.Designer.cs">
+      <DependentUpon>anadirAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="anadirLocal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,7 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminOrm.cs" />
     <Compile Include="Models\ArmoniiEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,6 +160,9 @@
     <Compile Include="UsuariosMusicos.Designer.cs">
       <DependentUpon>UsuariosMusicos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administradores.resx">
+      <DependentUpon>Administradores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="anadirLocal.resx">
       <DependentUpon>anadirLocal.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +213,7 @@
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.MusicoOrm.datasource" />
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Orm.datasource" />
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.Usuario.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioAdmin.datasource" />
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm+UsuarioLocal.datasource" />
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm+UsuarioMusico.datasource" />
     <None Include="Properties\DataSources\WindowsFormsAppArmonii.Models.UsuarioOrm.datasource" />

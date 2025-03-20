@@ -45,13 +45,12 @@
             this.tbRepiteContra = new System.Windows.Forms.TextBox();
             this.tbBiografia = new System.Windows.Forms.TextBox();
             this.tbEdad = new System.Windows.Forms.TextBox();
-            this.tbNombreArtistico = new System.Windows.Forms.TextBox();
+            this.tbApellido = new System.Windows.Forms.TextBox();
             this.lbGenerosMusicales = new System.Windows.Forms.ListBox();
             this.btnAnadirGenero = new System.Windows.Forms.Button();
             this.btnQuitarGenero = new System.Windows.Forms.Button();
             this.btnGuardarMusico = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +83,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(427, 79);
+            this.label5.Location = new System.Drawing.Point(461, 79);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 16);
+            this.label5.Size = new System.Drawing.Size(57, 16);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Nombre Aristico:";
+            this.label5.Text = "Apellido";
             // 
             // label6
             // 
@@ -102,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(559, 135);
+            this.label3.Location = new System.Drawing.Point(557, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 16);
             this.label3.TabIndex = 6;
@@ -139,7 +138,7 @@
             // 
             this.tbNombre.Location = new System.Drawing.Point(155, 73);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(74, 22);
+            this.tbNombre.Size = new System.Drawing.Size(99, 22);
             this.tbNombre.TabIndex = 10;
             // 
             // tbGeneroMusical
@@ -192,12 +191,12 @@
             this.tbEdad.Size = new System.Drawing.Size(54, 22);
             this.tbEdad.TabIndex = 17;
             // 
-            // tbNombreArtistico
+            // tbApellido
             // 
-            this.tbNombreArtistico.Location = new System.Drawing.Point(531, 73);
-            this.tbNombreArtistico.Name = "tbNombreArtistico";
-            this.tbNombreArtistico.Size = new System.Drawing.Size(153, 22);
-            this.tbNombreArtistico.TabIndex = 18;
+            this.tbApellido.Location = new System.Drawing.Point(531, 73);
+            this.tbApellido.Name = "tbApellido";
+            this.tbApellido.Size = new System.Drawing.Size(153, 22);
+            this.tbApellido.TabIndex = 18;
             // 
             // lbGenerosMusicales
             // 
@@ -246,26 +245,17 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(233, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(498, 24);
-            this.comboBox1.TabIndex = 24;
-            // 
             // anadirMusico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 580);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardarMusico);
             this.Controls.Add(this.btnQuitarGenero);
             this.Controls.Add(this.btnAnadirGenero);
             this.Controls.Add(this.lbGenerosMusicales);
-            this.Controls.Add(this.tbNombreArtistico);
+            this.Controls.Add(this.tbApellido);
             this.Controls.Add(this.tbEdad);
             this.Controls.Add(this.tbBiografia);
             this.Controls.Add(this.tbRepiteContra);
@@ -309,12 +299,11 @@
         private System.Windows.Forms.TextBox tbRepiteContra;
         private System.Windows.Forms.TextBox tbBiografia;
         private System.Windows.Forms.TextBox tbEdad;
-        private System.Windows.Forms.TextBox tbNombreArtistico;
+        private System.Windows.Forms.TextBox tbApellido;
         private System.Windows.Forms.ListBox lbGenerosMusicales;
         private System.Windows.Forms.Button btnAnadirGenero;
         private System.Windows.Forms.Button btnQuitarGenero;
         private System.Windows.Forms.Button btnGuardarMusico;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

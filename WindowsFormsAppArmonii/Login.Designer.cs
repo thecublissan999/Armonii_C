@@ -43,14 +43,14 @@
             this.tbUser.Location = new System.Drawing.Point(280, 209);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(187, 22);
-            this.tbUser.TabIndex = 0;
+            this.tbUser.TabIndex = 1;
             // 
             // btnLogearse
             // 
             this.btnLogearse.Location = new System.Drawing.Point(332, 338);
             this.btnLogearse.Name = "btnLogearse";
             this.btnLogearse.Size = new System.Drawing.Size(75, 23);
-            this.btnLogearse.TabIndex = 2;
+            this.btnLogearse.TabIndex = 3;
             this.btnLogearse.Text = "Entrar";
             this.btnLogearse.UseVisualStyleBackColor = true;
             this.btnLogearse.Click += new System.EventHandler(this.btnLogearse_Click);
@@ -60,7 +60,7 @@
             this.tbContraseña.Location = new System.Drawing.Point(280, 275);
             this.tbContraseña.Name = "tbContraseña";
             this.tbContraseña.Size = new System.Drawing.Size(187, 22);
-            this.tbContraseña.TabIndex = 0;
+            this.tbContraseña.TabIndex = 2;
             // 
             // label1
             // 
@@ -68,7 +68,7 @@
             this.label1.Location = new System.Drawing.Point(223, 215);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 16);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Correo:";
             // 
             // label2
@@ -77,7 +77,7 @@
             this.label2.Location = new System.Drawing.Point(195, 278);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 16);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Contraseña:";
             // 
             // bindingSourceLogin

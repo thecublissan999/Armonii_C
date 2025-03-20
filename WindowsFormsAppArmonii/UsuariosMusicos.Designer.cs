@@ -36,21 +36,20 @@
             this.btnAnadir = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreArtisticoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contrasenyaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.biografiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contrasenyaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoMusical = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.biografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaRegistroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valoracionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -60,6 +59,7 @@
             // bindingSource1
             // 
             this.bindingSource1.DataSource = typeof(WindowsFormsAppArmonii.Models.UsuarioOrm.UsuarioMusico);
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // btnatras
             // 
@@ -119,18 +119,17 @@
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nombreDataGridViewTextBoxColumn,
-            this.nombreArtisticoDataGridViewTextBoxColumn,
+            this.apellido,
             this.correoDataGridViewTextBoxColumn,
-            this.contrasenyaDataGridViewTextBoxColumn,
+            this.apodo,
+            this.edad,
             this.telefonoDataGridViewTextBoxColumn,
-            this.edadDataGridViewTextBoxColumn,
-            this.biografiaDataGridViewTextBoxColumn,
-            this.longitudDataGridViewTextBoxColumn,
-            this.latitudDataGridViewTextBoxColumn,
+            this.contrasenyaDataGridViewTextBoxColumn,
+            this.genero,
+            this.generoMusical,
+            this.biografia,
             this.fechaRegistroDataGridViewTextBoxColumn,
-            this.estadoDataGridViewTextBoxColumn,
-            this.valoracionDataGridViewTextBoxColumn,
-            this.generoDataGridViewTextBoxColumn});
+            this.valoracionDataGridViewTextBoxColumn});
             this.dgvUsuarios.DataSource = this.bindingSource1;
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 18);
@@ -140,6 +139,17 @@
             this.dgvUsuarios.RowTemplate.Height = 24;
             this.dgvUsuarios.Size = new System.Drawing.Size(1207, 453);
             this.dgvUsuarios.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 18);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1207, 453);
+            this.dataGridView1.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -161,15 +171,15 @@
             this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
             this.nombreDataGridViewTextBoxColumn.Width = 82;
             // 
-            // nombreArtisticoDataGridViewTextBoxColumn
+            // apellido
             // 
-            this.nombreArtisticoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nombreArtisticoDataGridViewTextBoxColumn.DataPropertyName = "nombreArtistico";
-            this.nombreArtisticoDataGridViewTextBoxColumn.HeaderText = "nombreArtistico";
-            this.nombreArtisticoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreArtisticoDataGridViewTextBoxColumn.Name = "nombreArtisticoDataGridViewTextBoxColumn";
-            this.nombreArtisticoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreArtisticoDataGridViewTextBoxColumn.Width = 129;
+            this.apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.apellido.DataPropertyName = "apellido";
+            this.apellido.HeaderText = "apellido";
+            this.apellido.MinimumWidth = 6;
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            this.apellido.Width = 85;
             // 
             // correoDataGridViewTextBoxColumn
             // 
@@ -181,15 +191,25 @@
             this.correoDataGridViewTextBoxColumn.ReadOnly = true;
             this.correoDataGridViewTextBoxColumn.Width = 75;
             // 
-            // contrasenyaDataGridViewTextBoxColumn
+            // apodo
             // 
-            this.contrasenyaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.contrasenyaDataGridViewTextBoxColumn.DataPropertyName = "contrasenya";
-            this.contrasenyaDataGridViewTextBoxColumn.HeaderText = "contrasenya";
-            this.contrasenyaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.contrasenyaDataGridViewTextBoxColumn.Name = "contrasenyaDataGridViewTextBoxColumn";
-            this.contrasenyaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.contrasenyaDataGridViewTextBoxColumn.Width = 110;
+            this.apodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.apodo.DataPropertyName = "apodo";
+            this.apodo.HeaderText = "apodo";
+            this.apodo.MinimumWidth = 6;
+            this.apodo.Name = "apodo";
+            this.apodo.ReadOnly = true;
+            this.apodo.Width = 76;
+            // 
+            // edad
+            // 
+            this.edad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.edad.DataPropertyName = "edad";
+            this.edad.HeaderText = "edad";
+            this.edad.MinimumWidth = 6;
+            this.edad.Name = "edad";
+            this.edad.ReadOnly = true;
+            this.edad.Width = 68;
             // 
             // telefonoDataGridViewTextBoxColumn
             // 
@@ -201,45 +221,45 @@
             this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
             this.telefonoDataGridViewTextBoxColumn.Width = 84;
             // 
-            // edadDataGridViewTextBoxColumn
+            // contrasenyaDataGridViewTextBoxColumn
             // 
-            this.edadDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.edadDataGridViewTextBoxColumn.DataPropertyName = "edad";
-            this.edadDataGridViewTextBoxColumn.HeaderText = "edad";
-            this.edadDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.edadDataGridViewTextBoxColumn.Name = "edadDataGridViewTextBoxColumn";
-            this.edadDataGridViewTextBoxColumn.ReadOnly = true;
-            this.edadDataGridViewTextBoxColumn.Width = 68;
+            this.contrasenyaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.contrasenyaDataGridViewTextBoxColumn.DataPropertyName = "contrasenya";
+            this.contrasenyaDataGridViewTextBoxColumn.HeaderText = "contrasenya";
+            this.contrasenyaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.contrasenyaDataGridViewTextBoxColumn.Name = "contrasenyaDataGridViewTextBoxColumn";
+            this.contrasenyaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contrasenyaDataGridViewTextBoxColumn.Width = 110;
             // 
-            // biografiaDataGridViewTextBoxColumn
+            // genero
             // 
-            this.biografiaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.biografiaDataGridViewTextBoxColumn.DataPropertyName = "biografia";
-            this.biografiaDataGridViewTextBoxColumn.HeaderText = "biografia";
-            this.biografiaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.biografiaDataGridViewTextBoxColumn.Name = "biografiaDataGridViewTextBoxColumn";
-            this.biografiaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.biografiaDataGridViewTextBoxColumn.Width = 89;
+            this.genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.genero.DataPropertyName = "genero";
+            this.genero.HeaderText = "genero";
+            this.genero.MinimumWidth = 6;
+            this.genero.Name = "genero";
+            this.genero.ReadOnly = true;
+            this.genero.Width = 79;
             // 
-            // longitudDataGridViewTextBoxColumn
+            // generoMusical
             // 
-            this.longitudDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.longitudDataGridViewTextBoxColumn.DataPropertyName = "longitud";
-            this.longitudDataGridViewTextBoxColumn.HeaderText = "longitud";
-            this.longitudDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.longitudDataGridViewTextBoxColumn.Name = "longitudDataGridViewTextBoxColumn";
-            this.longitudDataGridViewTextBoxColumn.ReadOnly = true;
-            this.longitudDataGridViewTextBoxColumn.Width = 83;
+            this.generoMusical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.generoMusical.DataPropertyName = "generoMusical";
+            this.generoMusical.HeaderText = "generoMusical";
+            this.generoMusical.MinimumWidth = 6;
+            this.generoMusical.Name = "generoMusical";
+            this.generoMusical.ReadOnly = true;
+            this.generoMusical.Width = 125;
             // 
-            // latitudDataGridViewTextBoxColumn
+            // biografia
             // 
-            this.latitudDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.latitudDataGridViewTextBoxColumn.DataPropertyName = "latitud";
-            this.latitudDataGridViewTextBoxColumn.HeaderText = "latitud";
-            this.latitudDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.latitudDataGridViewTextBoxColumn.Name = "latitudDataGridViewTextBoxColumn";
-            this.latitudDataGridViewTextBoxColumn.ReadOnly = true;
-            this.latitudDataGridViewTextBoxColumn.Width = 71;
+            this.biografia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.biografia.DataPropertyName = "biografia";
+            this.biografia.HeaderText = "biografia";
+            this.biografia.MinimumWidth = 6;
+            this.biografia.Name = "biografia";
+            this.biografia.ReadOnly = true;
+            this.biografia.Width = 89;
             // 
             // fechaRegistroDataGridViewTextBoxColumn
             // 
@@ -251,16 +271,6 @@
             this.fechaRegistroDataGridViewTextBoxColumn.ReadOnly = true;
             this.fechaRegistroDataGridViewTextBoxColumn.Width = 120;
             // 
-            // estadoDataGridViewTextBoxColumn
-            // 
-            this.estadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.estadoDataGridViewTextBoxColumn.DataPropertyName = "estado";
-            this.estadoDataGridViewTextBoxColumn.HeaderText = "estado";
-            this.estadoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
-            this.estadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estadoDataGridViewTextBoxColumn.Width = 78;
-            // 
             // valoracionDataGridViewTextBoxColumn
             // 
             this.valoracionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -270,27 +280,6 @@
             this.valoracionDataGridViewTextBoxColumn.Name = "valoracionDataGridViewTextBoxColumn";
             this.valoracionDataGridViewTextBoxColumn.ReadOnly = true;
             this.valoracionDataGridViewTextBoxColumn.Width = 99;
-            // 
-            // generoDataGridViewTextBoxColumn
-            // 
-            this.generoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.generoDataGridViewTextBoxColumn.DataPropertyName = "genero";
-            this.generoDataGridViewTextBoxColumn.HeaderText = "genero";
-            this.generoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
-            this.generoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.generoDataGridViewTextBoxColumn.Width = 79;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 18);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1207, 453);
-            this.dataGridView1.TabIndex = 0;
             // 
             // UsuariosMusicos
             // 
@@ -321,20 +310,19 @@
         private System.Windows.Forms.Button btnAnadir;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreArtisticoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contrasenyaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apodo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn edad;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn edadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn biografiaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn longitudDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn latitudDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contrasenyaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn generoMusical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn biografia;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaRegistroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoracionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

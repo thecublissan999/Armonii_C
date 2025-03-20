@@ -54,7 +54,7 @@
             this.btnCalendar.Location = new System.Drawing.Point(343, 416);
             this.btnCalendar.Name = "btnCalendar";
             this.btnCalendar.Size = new System.Drawing.Size(143, 170);
-            this.btnCalendar.TabIndex = 0;
+            this.btnCalendar.TabIndex = 5;
             this.btnCalendar.Text = "Calendario";
             this.btnCalendar.UseVisualStyleBackColor = true;
             this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
@@ -64,7 +64,7 @@
             this.btnMusico.Location = new System.Drawing.Point(343, 137);
             this.btnMusico.Name = "btnMusico";
             this.btnMusico.Size = new System.Drawing.Size(143, 170);
-            this.btnMusico.TabIndex = 0;
+            this.btnMusico.TabIndex = 1;
             this.btnMusico.Text = "Musico";
             this.btnMusico.UseVisualStyleBackColor = true;
             this.btnMusico.Click += new System.EventHandler(this.btnMusico_Click);
@@ -74,7 +74,7 @@
             this.btnGraficos.Location = new System.Drawing.Point(697, 416);
             this.btnGraficos.Name = "btnGraficos";
             this.btnGraficos.Size = new System.Drawing.Size(143, 170);
-            this.btnGraficos.TabIndex = 0;
+            this.btnGraficos.TabIndex = 6;
             this.btnGraficos.Text = "Graficos";
             this.btnGraficos.UseVisualStyleBackColor = true;
             // 
@@ -83,7 +83,7 @@
             this.btnMapa.Location = new System.Drawing.Point(697, 137);
             this.btnMapa.Name = "btnMapa";
             this.btnMapa.Size = new System.Drawing.Size(143, 170);
-            this.btnMapa.TabIndex = 0;
+            this.btnMapa.TabIndex = 2;
             this.btnMapa.Text = "Mapa";
             this.btnMapa.UseVisualStyleBackColor = true;
             // 
@@ -92,7 +92,7 @@
             this.btnAyuda.Location = new System.Drawing.Point(922, 416);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(143, 170);
-            this.btnAyuda.TabIndex = 0;
+            this.btnAyuda.TabIndex = 7;
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.UseVisualStyleBackColor = true;
             // 
@@ -101,7 +101,7 @@
             this.btnControl.Location = new System.Drawing.Point(922, 137);
             this.btnControl.Name = "btnControl";
             this.btnControl.Size = new System.Drawing.Size(143, 170);
-            this.btnControl.TabIndex = 0;
+            this.btnControl.TabIndex = 3;
             this.btnControl.Text = "Control de Versiones";
             this.btnControl.UseVisualStyleBackColor = true;
             // 
@@ -110,16 +110,17 @@
             this.btnAdmin.Location = new System.Drawing.Point(118, 416);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(143, 170);
-            this.btnAdmin.TabIndex = 0;
+            this.btnAdmin.TabIndex = 4;
             this.btnAdmin.Text = "Administradores";
             this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.Location = new System.Drawing.Point(518, 656);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(116, 23);
-            this.btnCerrarSesion.TabIndex = 1;
+            this.btnCerrarSesion.TabIndex = 8;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);

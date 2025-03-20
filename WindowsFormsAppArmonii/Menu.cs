@@ -44,5 +44,12 @@ namespace WindowsFormsAppArmonii
             nuevoFormulario.Show();
             this.Hide();
         }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            Administradores nuevoFormulario = new Administradores();
+            nuevoFormulario.Show();
+            this.Hide();
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace WindowsFormsAppArmonii
 
             // Agregar los hints a los TextBox (para TextBox no multilinea)
             SendMessage(tbNombre.Handle, EM_SETCUEBANNER, 0, "Nombre");
-            SendMessage(tbNombreArtistico.Handle, EM_SETCUEBANNER, 0, "Nombre Artístico");
+            SendMessage(tbApellido.Handle, EM_SETCUEBANNER, 0, "Apellido");
             SendMessage(tbEdad.Handle, EM_SETCUEBANNER, 0, "Edad");
             SendMessage(tbCorreo.Handle, EM_SETCUEBANNER, 0, "Correo");
             SendMessage(tbTelefono.Handle, EM_SETCUEBANNER, 0, "Teléfono");
@@ -137,10 +137,16 @@ namespace WindowsFormsAppArmonii
             usuario.nombre = tbNombre.Text;
             usuario.correo = tbCorreo.Text;
             usuario.contrasenya = tbContra.Text;
+            usuario.telefono = tbTelefono.Text;
+            usuario.fechaRegistro = DateTime.Now;
+            usuario.estado = true;
+            musico.edad = edad;
+            musico.biografia = tbBiografia.Text;
+            musico.genero = string.Join(", ", lbGenerosMusicales.Items.Cast<string>());
 
             // Asignar los valores de los TextBox a las propiedades del objeto UsuarioMusico
             usuarioMusico.nombre = tbNombre.Text;
-            usuarioMusico.nombreArtistico = tbNombreArtistico.Text;
+            usuarioMusico.apellido = tbApellido.Text;
             usuarioMusico.correo = tbCorreo.Text;
             usuarioMusico.contrasenya = tbContra.Text; // Asignar la contraseña
             usuarioMusico.telefono = tbTelefono.Text;
@@ -165,12 +171,17 @@ namespace WindowsFormsAppArmonii
 
             // Si es necesario mostrar o usar el objeto `usuarioMusico`, puedes hacerlo aquí
             // Ejemplo de mostrar el contenido del objeto en un MessageBox
-            MessageBox.Show($"Usuario guardado: {usuarioMusico.nombre} - {usuarioMusico.genero}");
+            MessageBox.Show($"Usuario guardado: {musico.genero} - {usuarioMusico.genero}");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close(); // Cerrar el formulario actual
+        }
+
+        private void anadirMusico_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

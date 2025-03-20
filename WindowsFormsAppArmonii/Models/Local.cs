@@ -27,6 +27,8 @@ namespace WindowsFormsAppArmonii.Models
         public Nullable<System.TimeSpan> horarioApertura { get; set; }
         public Nullable<System.TimeSpan> horarioCierre { get; set; }
         public Nullable<int> idUsuario { get; set; }
+        public string descripcion { get; set; }
+        public string imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento> Evento { get; set; }

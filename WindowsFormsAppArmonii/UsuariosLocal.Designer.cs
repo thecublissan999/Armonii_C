@@ -31,26 +31,23 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_local = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contrasenya = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horarioApertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horarioCierre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valoracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceUsers = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAnadir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.btnatras = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contrasenyaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horarioAperturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horarioCierreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaRegistroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoracionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipolocalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsers)).BeginInit();
@@ -66,7 +63,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1213, 474);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dgvUsuarios
             // 
@@ -77,19 +73,16 @@
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.direccionDataGridViewTextBoxColumn,
-            this.correoDataGridViewTextBoxColumn,
-            this.contrasenyaDataGridViewTextBoxColumn,
-            this.telefonoDataGridViewTextBoxColumn,
-            this.horarioAperturaDataGridViewTextBoxColumn,
-            this.horarioCierreDataGridViewTextBoxColumn,
-            this.longitudDataGridViewTextBoxColumn,
-            this.latitudDataGridViewTextBoxColumn,
-            this.fechaRegistroDataGridViewTextBoxColumn,
-            this.estadoDataGridViewTextBoxColumn,
-            this.valoracionDataGridViewTextBoxColumn,
-            this.tipolocalDataGridViewTextBoxColumn});
+            this.nombre,
+            this.correo,
+            this.direccion,
+            this.tipo_local,
+            this.descripcion,
+            this.telefono,
+            this.contrasenya,
+            this.horarioApertura,
+            this.horarioCierre,
+            this.valoracion});
             this.dgvUsuarios.DataSource = this.bindingSourceUsers;
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 18);
@@ -99,12 +92,120 @@
             this.dgvUsuarios.RowTemplate.Height = 24;
             this.dgvUsuarios.Size = new System.Drawing.Size(1207, 453);
             this.dgvUsuarios.TabIndex = 1;
-            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 47;
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "nombre";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 82;
+            // 
+            // correo
+            // 
+            this.correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.correo.DataPropertyName = "correo";
+            this.correo.HeaderText = "correo";
+            this.correo.MinimumWidth = 6;
+            this.correo.Name = "correo";
+            this.correo.ReadOnly = true;
+            this.correo.Width = 75;
+            // 
+            // direccion
+            // 
+            this.direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.direccion.DataPropertyName = "direccion";
+            this.direccion.HeaderText = "direccion";
+            this.direccion.MinimumWidth = 6;
+            this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
+            this.direccion.Width = 91;
+            // 
+            // tipo_local
+            // 
+            this.tipo_local.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tipo_local.DataPropertyName = "tipo_local";
+            this.tipo_local.HeaderText = "tipo_local";
+            this.tipo_local.MinimumWidth = 6;
+            this.tipo_local.Name = "tipo_local";
+            this.tipo_local.ReadOnly = true;
+            this.tipo_local.Width = 94;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "descripcion";
+            this.descripcion.MinimumWidth = 6;
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 106;
+            // 
+            // telefono
+            // 
+            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.telefono.DataPropertyName = "telefono";
+            this.telefono.HeaderText = "telefono";
+            this.telefono.MinimumWidth = 6;
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            this.telefono.Width = 84;
+            // 
+            // contrasenya
+            // 
+            this.contrasenya.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.contrasenya.DataPropertyName = "contrasenya";
+            this.contrasenya.HeaderText = "contrasenya";
+            this.contrasenya.MinimumWidth = 6;
+            this.contrasenya.Name = "contrasenya";
+            this.contrasenya.ReadOnly = true;
+            this.contrasenya.Width = 110;
+            // 
+            // horarioApertura
+            // 
+            this.horarioApertura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.horarioApertura.DataPropertyName = "horarioApertura";
+            this.horarioApertura.HeaderText = "horarioApertura";
+            this.horarioApertura.MinimumWidth = 6;
+            this.horarioApertura.Name = "horarioApertura";
+            this.horarioApertura.ReadOnly = true;
+            this.horarioApertura.Width = 129;
+            // 
+            // horarioCierre
+            // 
+            this.horarioCierre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.horarioCierre.DataPropertyName = "horarioCierre";
+            this.horarioCierre.HeaderText = "horarioCierre";
+            this.horarioCierre.MinimumWidth = 6;
+            this.horarioCierre.Name = "horarioCierre";
+            this.horarioCierre.ReadOnly = true;
+            this.horarioCierre.Width = 114;
+            // 
+            // valoracion
+            // 
+            this.valoracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valoracion.DataPropertyName = "valoracion";
+            this.valoracion.HeaderText = "valoracion";
+            this.valoracion.MinimumWidth = 6;
+            this.valoracion.Name = "valoracion";
+            this.valoracion.ReadOnly = true;
+            this.valoracion.Width = 99;
             // 
             // bindingSourceUsers
             // 
             this.bindingSourceUsers.DataSource = typeof(WindowsFormsAppArmonii.Models.UsuarioOrm.UsuarioLocal);
-            this.bindingSourceUsers.CurrentChanged += new System.EventHandler(this.bindingSourceUsers_CurrentChanged);
             // 
             // dataGridView1
             // 
@@ -116,7 +217,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1207, 453);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnAnadir
             // 
@@ -146,7 +246,7 @@
             this.buttonEliminar.TabIndex = 3;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.button1_Click);
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // btnatras
             // 
@@ -157,146 +257,6 @@
             this.btnatras.Text = "Atras";
             this.btnatras.UseVisualStyleBackColor = true;
             this.btnatras.Click += new System.EventHandler(this.btnatras_Click);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 47;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 82;
-            // 
-            // direccionDataGridViewTextBoxColumn
-            // 
-            this.direccionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.direccionDataGridViewTextBoxColumn.DataPropertyName = "direccion";
-            this.direccionDataGridViewTextBoxColumn.HeaderText = "direccion";
-            this.direccionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
-            this.direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.direccionDataGridViewTextBoxColumn.Width = 91;
-            // 
-            // correoDataGridViewTextBoxColumn
-            // 
-            this.correoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.correoDataGridViewTextBoxColumn.DataPropertyName = "correo";
-            this.correoDataGridViewTextBoxColumn.HeaderText = "correo";
-            this.correoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
-            this.correoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.correoDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // contrasenyaDataGridViewTextBoxColumn
-            // 
-            this.contrasenyaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.contrasenyaDataGridViewTextBoxColumn.DataPropertyName = "contrasenya";
-            this.contrasenyaDataGridViewTextBoxColumn.HeaderText = "contrasenya";
-            this.contrasenyaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.contrasenyaDataGridViewTextBoxColumn.Name = "contrasenyaDataGridViewTextBoxColumn";
-            this.contrasenyaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.contrasenyaDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // telefonoDataGridViewTextBoxColumn
-            // 
-            this.telefonoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
-            this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.telefonoDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // horarioAperturaDataGridViewTextBoxColumn
-            // 
-            this.horarioAperturaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.horarioAperturaDataGridViewTextBoxColumn.DataPropertyName = "horarioApertura";
-            this.horarioAperturaDataGridViewTextBoxColumn.HeaderText = "horarioApertura";
-            this.horarioAperturaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.horarioAperturaDataGridViewTextBoxColumn.Name = "horarioAperturaDataGridViewTextBoxColumn";
-            this.horarioAperturaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.horarioAperturaDataGridViewTextBoxColumn.Width = 129;
-            // 
-            // horarioCierreDataGridViewTextBoxColumn
-            // 
-            this.horarioCierreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.horarioCierreDataGridViewTextBoxColumn.DataPropertyName = "horarioCierre";
-            this.horarioCierreDataGridViewTextBoxColumn.HeaderText = "horarioCierre";
-            this.horarioCierreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.horarioCierreDataGridViewTextBoxColumn.Name = "horarioCierreDataGridViewTextBoxColumn";
-            this.horarioCierreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.horarioCierreDataGridViewTextBoxColumn.Width = 114;
-            // 
-            // longitudDataGridViewTextBoxColumn
-            // 
-            this.longitudDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.longitudDataGridViewTextBoxColumn.DataPropertyName = "longitud";
-            this.longitudDataGridViewTextBoxColumn.HeaderText = "longitud";
-            this.longitudDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.longitudDataGridViewTextBoxColumn.Name = "longitudDataGridViewTextBoxColumn";
-            this.longitudDataGridViewTextBoxColumn.ReadOnly = true;
-            this.longitudDataGridViewTextBoxColumn.Width = 83;
-            // 
-            // latitudDataGridViewTextBoxColumn
-            // 
-            this.latitudDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.latitudDataGridViewTextBoxColumn.DataPropertyName = "latitud";
-            this.latitudDataGridViewTextBoxColumn.HeaderText = "latitud";
-            this.latitudDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.latitudDataGridViewTextBoxColumn.Name = "latitudDataGridViewTextBoxColumn";
-            this.latitudDataGridViewTextBoxColumn.ReadOnly = true;
-            this.latitudDataGridViewTextBoxColumn.Width = 71;
-            // 
-            // fechaRegistroDataGridViewTextBoxColumn
-            // 
-            this.fechaRegistroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fechaRegistroDataGridViewTextBoxColumn.DataPropertyName = "fechaRegistro";
-            this.fechaRegistroDataGridViewTextBoxColumn.HeaderText = "fechaRegistro";
-            this.fechaRegistroDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fechaRegistroDataGridViewTextBoxColumn.Name = "fechaRegistroDataGridViewTextBoxColumn";
-            this.fechaRegistroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fechaRegistroDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // estadoDataGridViewTextBoxColumn
-            // 
-            this.estadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.estadoDataGridViewTextBoxColumn.DataPropertyName = "estado";
-            this.estadoDataGridViewTextBoxColumn.HeaderText = "estado";
-            this.estadoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
-            this.estadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estadoDataGridViewTextBoxColumn.Width = 78;
-            // 
-            // valoracionDataGridViewTextBoxColumn
-            // 
-            this.valoracionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valoracionDataGridViewTextBoxColumn.DataPropertyName = "valoracion";
-            this.valoracionDataGridViewTextBoxColumn.HeaderText = "valoracion";
-            this.valoracionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valoracionDataGridViewTextBoxColumn.Name = "valoracionDataGridViewTextBoxColumn";
-            this.valoracionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.valoracionDataGridViewTextBoxColumn.Width = 99;
-            // 
-            // tipolocalDataGridViewTextBoxColumn
-            // 
-            this.tipolocalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipolocalDataGridViewTextBoxColumn.DataPropertyName = "tipo_local";
-            this.tipolocalDataGridViewTextBoxColumn.HeaderText = "tipo_local";
-            this.tipolocalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tipolocalDataGridViewTextBoxColumn.Name = "tipolocalDataGridViewTextBoxColumn";
-            this.tipolocalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipolocalDataGridViewTextBoxColumn.Width = 94;
             // 
             // UsuariosLocal
             // 
@@ -329,18 +289,15 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnatras;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contrasenyaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horarioAperturaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horarioCierreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn longitudDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn latitudDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaRegistroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valoracionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipolocalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo_local;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contrasenya;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horarioApertura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horarioCierre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valoracion;
     }
 }
