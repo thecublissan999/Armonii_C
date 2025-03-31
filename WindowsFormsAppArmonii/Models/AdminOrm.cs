@@ -18,24 +18,26 @@ namespace WindowsFormsAppArmonii.Models
             public Nullable<int> permiso { get; set; }
         }
 
-        public static List<UsuarioAdminDTO> SelectAll()
+        public static List<UsuarioAdminDTO> obtenerAdmins()
         {
-            using (var context = Orm.bd)
+            if (Orm.bd == null)
             {
-                var query = context.UsuarioAdmin
-                    .Select(u => new UsuarioAdminDTO
-                    {
-                        id = u.id,
-                        nombre = u.nombre,
-                        correo = u.correo,
-                        contrasenya = u.contrasenya,
-                        telefono = u.telefono,
-                        permiso = u.permiso
-                    })
-                    .ToList();
-
-                return query;
+                throw new InvalidOperationException("El contexto DbContext no está inicializado.");
             }
+
+            var query = Orm.bd.UsuarioAdmin
+                .Select(u => new UsuarioAdminDTO
+                {
+                    id = u.id,
+                    nombre = u.nombre,
+                    correo = u.correo,
+                    contrasenya = u.contrasenya,
+                    telefono = u.telefono,
+                    permiso = u.permiso
+                })
+                .ToList();
+
+            return query;
         }
 
     }

@@ -18,6 +18,21 @@
           <Property Name="estado" Type="bit" />
           <Property Name="duracion" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Generos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genero" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GenerosMusicos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGenero" Type="int" />
+          <Property Name="idMusico" Type="int" />
+        </EntityType>
         <EntityType Name="Local">
           <Key>
             <PropertyRef Name="id" />
@@ -50,11 +65,17 @@
           <Property Name="apodo" Type="varchar" MaxLength="100" />
           <Property Name="apellido" Type="varchar" MaxLength="50" />
           <Property Name="genero" Type="varchar" MaxLength="50" />
-          <Property Name="generoMusical" Type="varchar" MaxLength="50" />
           <Property Name="edad" Type="int" />
           <Property Name="biografia" Type="text" />
           <Property Name="imagen" Type="text" />
           <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -97,7 +118,7 @@
           <Property Name="idMusico" Type="int" />
           <Property Name="emisor" Type="char" MaxLength="1" />
         </EntityType>
-        <Association Name="FK_Evento_Local">
+        <Association Name="FK__Evento__idLocal__5070F446">
           <End Role="Local" Type="Self.Local" Multiplicity="1" />
           <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -109,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Evento_Musico">
+        <Association Name="FK__Evento__idMusico__5165187F">
           <End Role="Musico" Type="Self.Musico" Multiplicity="1" />
           <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -121,7 +142,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Local_Usuario">
+        <Association Name="FK__GenerosMu__idGen__48CFD27E">
+          <End Role="Generos" Type="Self.Generos" Multiplicity="0..1" />
+          <End Role="GenerosMusicos" Type="Self.GenerosMusicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenerosMusicos">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GenerosMu__idMus__49C3F6B7">
+          <End Role="Musico" Type="Self.Musico" Multiplicity="0..1" />
+          <End Role="GenerosMusicos" Type="Self.GenerosMusicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenerosMusicos">
+              <PropertyRef Name="idMusico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__idUsuario__4D94879B">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Local" Type="Self.Local" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mensaje_UsuarioLocal">
+        <Association Name="FK__Mensaje__idUsuar__5535A963">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,7 +190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mensaje_UsuarioMusico">
+        <Association Name="FK__Mensaje__idUsuar__5629CD9C">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Musico_Usuario">
+        <Association Name="FK__Musico__idUsuari__45F365D3">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Musico" Type="Self.Musico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -169,7 +214,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Valoracion_Evento">
+        <Association Name="FK__UsuarioAd__permi__3C69FB99">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="0..1" />
+          <End Role="UsuarioAdmin" Type="Self.UsuarioAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuarioAdmin">
+              <PropertyRef Name="permiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Valoracio__idEve__5BE2A6F2">
           <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
           <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -181,7 +238,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Valoracion_UsuarioLocal">
+        <Association Name="FK__Valoracio__idLoc__5CD6CB2B">
           <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
           <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,7 +250,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Valoracion_UsuarioMusico">
+        <Association Name="FK__Valoracio__idMus__5DCAEF64">
           <End Role="Musico" Type="Self.Musico" Multiplicity="0..1" />
           <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,45 +264,60 @@
         </Association>
         <EntityContainer Name="ArmoniiModelStoreContainer">
           <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Generos" EntityType="Self.Generos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenerosMusicos" EntityType="Self.GenerosMusicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mensaje" EntityType="Self.Mensaje" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musico" EntityType="Self.Musico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuarioAdmin" EntityType="Self.UsuarioAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Valoracion" EntityType="Self.Valoracion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Evento_Local" Association="Self.FK_Evento_Local">
+          <AssociationSet Name="FK__Evento__idLocal__5070F446" Association="Self.FK__Evento__idLocal__5070F446">
             <End Role="Local" EntitySet="Local" />
             <End Role="Evento" EntitySet="Evento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Evento_Musico" Association="Self.FK_Evento_Musico">
+          <AssociationSet Name="FK__Evento__idMusico__5165187F" Association="Self.FK__Evento__idMusico__5165187F">
             <End Role="Musico" EntitySet="Musico" />
             <End Role="Evento" EntitySet="Evento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Local_Usuario" Association="Self.FK_Local_Usuario">
+          <AssociationSet Name="FK__GenerosMu__idGen__48CFD27E" Association="Self.FK__GenerosMu__idGen__48CFD27E">
+            <End Role="Generos" EntitySet="Generos" />
+            <End Role="GenerosMusicos" EntitySet="GenerosMusicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GenerosMu__idMus__49C3F6B7" Association="Self.FK__GenerosMu__idMus__49C3F6B7">
+            <End Role="Musico" EntitySet="Musico" />
+            <End Role="GenerosMusicos" EntitySet="GenerosMusicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__idUsuario__4D94879B" Association="Self.FK__Local__idUsuario__4D94879B">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Local" EntitySet="Local" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mensaje_UsuarioLocal" Association="Self.FK_Mensaje_UsuarioLocal">
+          <AssociationSet Name="FK__Mensaje__idUsuar__5535A963" Association="Self.FK__Mensaje__idUsuar__5535A963">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Mensaje" EntitySet="Mensaje" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mensaje_UsuarioMusico" Association="Self.FK_Mensaje_UsuarioMusico">
+          <AssociationSet Name="FK__Mensaje__idUsuar__5629CD9C" Association="Self.FK__Mensaje__idUsuar__5629CD9C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Mensaje" EntitySet="Mensaje" />
           </AssociationSet>
-          <AssociationSet Name="FK_Musico_Usuario" Association="Self.FK_Musico_Usuario">
+          <AssociationSet Name="FK__Musico__idUsuari__45F365D3" Association="Self.FK__Musico__idUsuari__45F365D3">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Musico" EntitySet="Musico" />
           </AssociationSet>
-          <AssociationSet Name="FK_Valoracion_Evento" Association="Self.FK_Valoracion_Evento">
+          <AssociationSet Name="FK__UsuarioAd__permi__3C69FB99" Association="Self.FK__UsuarioAd__permi__3C69FB99">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="UsuarioAdmin" EntitySet="UsuarioAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Valoracio__idEve__5BE2A6F2" Association="Self.FK__Valoracio__idEve__5BE2A6F2">
             <End Role="Evento" EntitySet="Evento" />
             <End Role="Valoracion" EntitySet="Valoracion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Valoracion_UsuarioLocal" Association="Self.FK_Valoracion_UsuarioLocal">
+          <AssociationSet Name="FK__Valoracio__idLoc__5CD6CB2B" Association="Self.FK__Valoracio__idLoc__5CD6CB2B">
             <End Role="Local" EntitySet="Local" />
             <End Role="Valoracion" EntitySet="Valoracion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Valoracion_UsuarioMusico" Association="Self.FK_Valoracion_UsuarioMusico">
+          <AssociationSet Name="FK__Valoracio__idMus__5DCAEF64" Association="Self.FK__Valoracio__idMus__5DCAEF64">
             <End Role="Musico" EntitySet="Musico" />
             <End Role="Valoracion" EntitySet="Valoracion" />
           </AssociationSet>
@@ -266,26 +338,9 @@
           <Property Name="idMusico" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Boolean" />
           <Property Name="duracion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Local" Relationship="Self.FK_Evento_Local" FromRole="Evento" ToRole="Local" />
-          <NavigationProperty Name="Musico" Relationship="Self.FK_Evento_Musico" FromRole="Evento" ToRole="Musico" />
           <NavigationProperty Name="Valoracion" Relationship="Self.FK_Valoracion_Evento" FromRole="Evento" ToRole="Valoracion" />
-        </EntityType>
-        <EntityType Name="Local">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo_local" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="horarioApertura" Type="Time" Precision="7" />
-          <Property Name="horarioCierre" Type="Time" Precision="7" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK_Evento_Local" FromRole="Local" ToRole="Evento" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Local_Usuario" FromRole="Local" ToRole="Usuario" />
-          <NavigationProperty Name="Valoracion" Relationship="Self.FK_Valoracion_UsuarioLocal" FromRole="Local" ToRole="Valoracion" />
-          <Property Name="idUsuario" Type="Int32" />
-          <NavigationProperty Name="Usuario1" Relationship="ArmoniiModel.FK_Local_Usuario1" FromRole="Local" ToRole="Usuario" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Local" Relationship="ArmoniiModel.FK_Evento_Local" FromRole="Evento" ToRole="Local" />
+          <NavigationProperty Name="Musico" Relationship="ArmoniiModel.FK_Evento_Musico" FromRole="Evento" ToRole="Musico" />
         </EntityType>
         <EntityType Name="Mensaje">
           <Key>
@@ -299,24 +354,6 @@
           <Property Name="emisor" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Mensaje_UsuarioLocal" FromRole="Mensaje" ToRole="Usuario" />
           <NavigationProperty Name="Usuario1" Relationship="Self.FK_Mensaje_UsuarioMusico" FromRole="Mensaje" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Musico">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="biografia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK_Evento_Musico" FromRole="Musico" ToRole="Evento" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Musico_Usuario" FromRole="Musico" ToRole="Usuario" />
-          <NavigationProperty Name="Valoracion" Relationship="Self.FK_Valoracion_UsuarioMusico" FromRole="Musico" ToRole="Valoracion" />
-          <Property Name="edad" Type="Int32" />
-          <Property Name="idUsuario" Type="Int32" />
-          <NavigationProperty Name="Usuario1" Relationship="ArmoniiModel.FK_Musico_Usuario1" FromRole="Musico" ToRole="Usuario" />
-          <Property Name="apodo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="generoMusical" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -333,12 +370,10 @@
           <Property Name="estado" Type="Boolean" />
           <Property Name="valoracion" Type="Double" />
           <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Local" Relationship="Self.FK_Local_Usuario" FromRole="Usuario" ToRole="Local" />
           <NavigationProperty Name="Mensaje" Relationship="Self.FK_Mensaje_UsuarioLocal" FromRole="Usuario" ToRole="Mensaje" />
           <NavigationProperty Name="Mensaje1" Relationship="Self.FK_Mensaje_UsuarioMusico" FromRole="Usuario" ToRole="Mensaje" />
-          <NavigationProperty Name="Musico" Relationship="Self.FK_Musico_Usuario" FromRole="Usuario" ToRole="Musico" />
-          <NavigationProperty Name="Local1" Relationship="ArmoniiModel.FK_Local_Usuario1" FromRole="Usuario" ToRole="Local" />
-          <NavigationProperty Name="Musico1" Relationship="ArmoniiModel.FK_Musico_Usuario1" FromRole="Usuario" ToRole="Musico" />
+          <NavigationProperty Name="Local" Relationship="ArmoniiModel.FK_Local_Usuario" FromRole="Usuario" ToRole="Local" />
+          <NavigationProperty Name="Musico" Relationship="ArmoniiModel.FK_Musico_Usuario" FromRole="Usuario" ToRole="Musico" />
         </EntityType>
         <EntityType Name="Valoracion">
           <Key>
@@ -354,33 +389,9 @@
           <Property Name="idMusico" Type="Int32" />
           <Property Name="emisor" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Evento" Relationship="Self.FK_Valoracion_Evento" FromRole="Valoracion" ToRole="Evento" />
-          <NavigationProperty Name="Local" Relationship="Self.FK_Valoracion_UsuarioLocal" FromRole="Valoracion" ToRole="Local" />
-          <NavigationProperty Name="Musico" Relationship="Self.FK_Valoracion_UsuarioMusico" FromRole="Valoracion" ToRole="Musico" />
+          <NavigationProperty Name="Local" Relationship="ArmoniiModel.FK_Valoracion_UsuarioLocal" FromRole="Valoracion" ToRole="Local" />
+          <NavigationProperty Name="Musico" Relationship="ArmoniiModel.FK_Valoracion_UsuarioMusico" FromRole="Valoracion" ToRole="Musico" />
         </EntityType>
-        <Association Name="FK_Evento_Local">
-          <End Role="Local" Type="Self.Local" Multiplicity="1" />
-          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Local">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Evento">
-              <PropertyRef Name="idLocal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Evento_Musico">
-          <End Role="Musico" Type="Self.Musico" Multiplicity="1" />
-          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musico">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Evento">
-              <PropertyRef Name="idMusico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Valoracion_Evento">
           <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
           <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
@@ -390,30 +401,6 @@
             </Principal>
             <Dependent Role="Valoracion">
               <PropertyRef Name="idEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Local_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Local">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Valoracion_UsuarioLocal">
-          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
-          <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Local">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Valoracion">
-              <PropertyRef Name="idLocal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -441,55 +428,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Musico_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Musico" Type="Self.Musico" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Musico">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Valoracion_UsuarioMusico">
-          <End Role="Musico" Type="Self.Musico" Multiplicity="0..1" />
-          <End Role="Valoracion" Type="Self.Valoracion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musico">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Valoracion">
-              <PropertyRef Name="idMusico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ArmoniiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Evento" EntityType="Self.Evento" />
-          <EntitySet Name="Local" EntityType="Self.Local" />
           <EntitySet Name="Mensaje" EntityType="Self.Mensaje" />
-          <EntitySet Name="Musico" EntityType="Self.Musico" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <EntitySet Name="Valoracion" EntityType="Self.Valoracion" />
-          <AssociationSet Name="FK_Evento_Local" Association="Self.FK_Evento_Local">
-            <End Role="Local" EntitySet="Local" />
-            <End Role="Evento" EntitySet="Evento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Evento_Musico" Association="Self.FK_Evento_Musico">
-            <End Role="Musico" EntitySet="Musico" />
-            <End Role="Evento" EntitySet="Evento" />
-          </AssociationSet>
           <AssociationSet Name="FK_Valoracion_Evento" Association="Self.FK_Valoracion_Evento">
             <End Role="Evento" EntitySet="Evento" />
-            <End Role="Valoracion" EntitySet="Valoracion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Local_Usuario" Association="Self.FK_Local_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Local" EntitySet="Local" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Valoracion_UsuarioLocal" Association="Self.FK_Valoracion_UsuarioLocal">
-            <End Role="Local" EntitySet="Local" />
             <End Role="Valoracion" EntitySet="Valoracion" />
           </AssociationSet>
           <AssociationSet Name="FK_Mensaje_UsuarioLocal" Association="Self.FK_Mensaje_UsuarioLocal">
@@ -500,22 +445,47 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Mensaje" EntitySet="Mensaje" />
           </AssociationSet>
-          <AssociationSet Name="FK_Musico_Usuario" Association="Self.FK_Musico_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Musico" EntitySet="Musico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Valoracion_UsuarioMusico" Association="Self.FK_Valoracion_UsuarioMusico">
-            <End Role="Musico" EntitySet="Musico" />
-            <End Role="Valoracion" EntitySet="Valoracion" />
-          </AssociationSet>
           <EntitySet Name="UsuarioAdmin" EntityType="ArmoniiModel.UsuarioAdmin" />
-          <AssociationSet Name="FK_Local_Usuario1" Association="ArmoniiModel.FK_Local_Usuario1">
+          <EntitySet Name="Local" EntityType="ArmoniiModel.Local" />
+          <AssociationSet Name="FK_Evento_Local" Association="ArmoniiModel.FK_Evento_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Usuario" Association="ArmoniiModel.FK_Local_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Local" EntitySet="Local" />
           </AssociationSet>
-          <AssociationSet Name="FK_Musico_Usuario1" Association="ArmoniiModel.FK_Musico_Usuario1">
+          <AssociationSet Name="FK_Valoracion_UsuarioLocal" Association="ArmoniiModel.FK_Valoracion_UsuarioLocal">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Valoracion" EntitySet="Valoracion" />
+          </AssociationSet>
+          <EntitySet Name="Musico" EntityType="ArmoniiModel.Musico" />
+          <AssociationSet Name="FK_Evento_Musico" Association="ArmoniiModel.FK_Evento_Musico">
+            <End Role="Musico" EntitySet="Musico" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musico_Usuario" Association="ArmoniiModel.FK_Musico_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Musico" EntitySet="Musico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Valoracion_UsuarioMusico" Association="ArmoniiModel.FK_Valoracion_UsuarioMusico">
+            <End Role="Musico" EntitySet="Musico" />
+            <End Role="Valoracion" EntitySet="Valoracion" />
+          </AssociationSet>
+          <EntitySet Name="Generos" EntityType="ArmoniiModel.Generos" />
+          <EntitySet Name="GenerosMusicos" EntityType="ArmoniiModel.GenerosMusicos" />
+          <EntitySet Name="Permisos" EntityType="ArmoniiModel.Permisos" />
+          <AssociationSet Name="FK__GenerosMu__idGen__48CFD27E" Association="ArmoniiModel.FK__GenerosMu__idGen__48CFD27E">
+            <End Role="Generos" EntitySet="Generos" />
+            <End Role="GenerosMusicos" EntitySet="GenerosMusicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GenerosMu__idMus__49C3F6B7" Association="ArmoniiModel.FK__GenerosMu__idMus__49C3F6B7">
+            <End Role="Musico" EntitySet="Musico" />
+            <End Role="GenerosMusicos" EntitySet="GenerosMusicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioAd__permi__3C69FB99" Association="ArmoniiModel.FK__UsuarioAd__permi__3C69FB99">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="UsuarioAdmin" EntitySet="UsuarioAdmin" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="UsuarioAdmin">
@@ -528,8 +498,37 @@
           <Property Name="contrasenya" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="permiso" Type="Int32" />
+          <NavigationProperty Name="Permisos" Relationship="ArmoniiModel.FK__UsuarioAd__permi__3C69FB99" FromRole="UsuarioAdmin" ToRole="Permisos" />
         </EntityType>
-        <Association Name="FK_Local_Usuario1">
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_local" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="horarioApertura" Type="Time" Precision="7" />
+          <Property Name="horarioCierre" Type="Time" Precision="7" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="Evento" Relationship="ArmoniiModel.FK_Evento_Local" FromRole="Local" ToRole="Evento" />
+          <NavigationProperty Name="Usuario" Relationship="ArmoniiModel.FK_Local_Usuario" FromRole="Local" ToRole="Usuario" />
+          <NavigationProperty Name="Valoracion" Relationship="ArmoniiModel.FK_Valoracion_UsuarioLocal" FromRole="Local" ToRole="Valoracion" />
+        </EntityType>
+        <Association Name="FK_Evento_Local">
+          <End Type="ArmoniiModel.Local" Role="Local" Multiplicity="1" />
+          <End Type="ArmoniiModel.Evento" Role="Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Usuario">
           <End Type="ArmoniiModel.Usuario" Role="Usuario" Multiplicity="0..1" />
           <End Type="ArmoniiModel.Local" Role="Local" Multiplicity="*" />
           <ReferentialConstraint>
@@ -541,7 +540,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Musico_Usuario1">
+        <Association Name="FK_Valoracion_UsuarioLocal">
+          <End Type="ArmoniiModel.Local" Role="Local" Multiplicity="0..1" />
+          <End Type="ArmoniiModel.Valoracion" Role="Valoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Valoracion">
+              <PropertyRef Name="idLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Musico">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apodo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="biografia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="Evento" Relationship="ArmoniiModel.FK_Evento_Musico" FromRole="Musico" ToRole="Evento" />
+          <NavigationProperty Name="Usuario" Relationship="ArmoniiModel.FK_Musico_Usuario" FromRole="Musico" ToRole="Usuario" />
+          <NavigationProperty Name="Valoracion" Relationship="ArmoniiModel.FK_Valoracion_UsuarioMusico" FromRole="Musico" ToRole="Valoracion" />
+          <NavigationProperty Name="GenerosMusicos" Relationship="ArmoniiModel.FK__GenerosMu__idMus__49C3F6B7" FromRole="Musico" ToRole="GenerosMusicos" />
+        </EntityType>
+        <Association Name="FK_Evento_Musico">
+          <End Type="ArmoniiModel.Musico" Role="Musico" Multiplicity="1" />
+          <End Type="ArmoniiModel.Evento" Role="Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idMusico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musico_Usuario">
           <End Type="ArmoniiModel.Usuario" Role="Usuario" Multiplicity="0..1" />
           <End Type="ArmoniiModel.Musico" Role="Musico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -550,6 +590,80 @@
             </Principal>
             <Dependent Role="Musico">
               <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Valoracion_UsuarioMusico">
+          <End Type="ArmoniiModel.Musico" Role="Musico" Multiplicity="0..1" />
+          <End Type="ArmoniiModel.Valoracion" Role="Valoracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Valoracion">
+              <PropertyRef Name="idMusico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Generos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genero" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GenerosMusicos" Relationship="ArmoniiModel.FK__GenerosMu__idGen__48CFD27E" FromRole="Generos" ToRole="GenerosMusicos" />
+        </EntityType>
+        <EntityType Name="GenerosMusicos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGenero" Type="Int32" />
+          <Property Name="idMusico" Type="Int32" />
+          <NavigationProperty Name="Generos" Relationship="ArmoniiModel.FK__GenerosMu__idGen__48CFD27E" FromRole="GenerosMusicos" ToRole="Generos" />
+          <NavigationProperty Name="Musico" Relationship="ArmoniiModel.FK__GenerosMu__idMus__49C3F6B7" FromRole="GenerosMusicos" ToRole="Musico" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UsuarioAdmin" Relationship="ArmoniiModel.FK__UsuarioAd__permi__3C69FB99" FromRole="Permisos" ToRole="UsuarioAdmin" />
+        </EntityType>
+        <Association Name="FK__GenerosMu__idGen__48CFD27E">
+          <End Type="ArmoniiModel.Generos" Role="Generos" Multiplicity="0..1" />
+          <End Type="ArmoniiModel.GenerosMusicos" Role="GenerosMusicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenerosMusicos">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GenerosMu__idMus__49C3F6B7">
+          <End Type="ArmoniiModel.Musico" Role="Musico" Multiplicity="0..1" />
+          <End Type="ArmoniiModel.GenerosMusicos" Role="GenerosMusicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenerosMusicos">
+              <PropertyRef Name="idMusico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioAd__permi__3C69FB99">
+          <End Type="ArmoniiModel.Permisos" Role="Permisos" Multiplicity="0..1" />
+          <End Type="ArmoniiModel.UsuarioAdmin" Role="UsuarioAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuarioAdmin">
+              <PropertyRef Name="permiso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -573,20 +687,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Local">
-            <EntityTypeMapping TypeName="ArmoniiModel.Local">
-              <MappingFragment StoreEntitySet="Local">
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="tipo_local" ColumnName="tipo_local" />
-                <ScalarProperty Name="horarioApertura" ColumnName="horarioApertura" />
-                <ScalarProperty Name="horarioCierre" ColumnName="horarioCierre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Mensaje">
             <EntityTypeMapping TypeName="ArmoniiModel.Mensaje">
               <MappingFragment StoreEntitySet="Mensaje">
@@ -596,21 +696,6 @@
                 <ScalarProperty Name="fechaEnvio" ColumnName="fechaEnvio" />
                 <ScalarProperty Name="mensaje1" ColumnName="mensaje" />
                 <ScalarProperty Name="emisor" ColumnName="emisor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Musico">
-            <EntityTypeMapping TypeName="ArmoniiModel.Musico">
-              <MappingFragment StoreEntitySet="Musico">
-                <ScalarProperty Name="imagen" ColumnName="imagen" />
-                <ScalarProperty Name="generoMusical" ColumnName="generoMusical" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="apodo" ColumnName="apodo" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="edad" ColumnName="edad" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="genero" ColumnName="genero" />
-                <ScalarProperty Name="biografia" ColumnName="biografia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -653,6 +738,59 @@
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="contrasenya" ColumnName="contrasenya" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Local">
+            <EntityTypeMapping TypeName="ArmoniiModel.Local">
+              <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="horarioCierre" ColumnName="horarioCierre" />
+                <ScalarProperty Name="horarioApertura" ColumnName="horarioApertura" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo_local" ColumnName="tipo_local" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musico">
+            <EntityTypeMapping TypeName="ArmoniiModel.Musico">
+              <MappingFragment StoreEntitySet="Musico">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="biografia" ColumnName="biografia" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="apodo" ColumnName="apodo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generos">
+            <EntityTypeMapping TypeName="ArmoniiModel.Generos">
+              <MappingFragment StoreEntitySet="Generos">
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenerosMusicos">
+            <EntityTypeMapping TypeName="ArmoniiModel.GenerosMusicos">
+              <MappingFragment StoreEntitySet="GenerosMusicos">
+                <ScalarProperty Name="idMusico" ColumnName="idMusico" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="ArmoniiModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

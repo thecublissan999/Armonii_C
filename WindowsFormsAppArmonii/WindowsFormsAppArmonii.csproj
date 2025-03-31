@@ -86,6 +86,12 @@
     <Compile Include="Calendario.Designer.cs">
       <DependentUpon>Calendario.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalendarioPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarioPrueba.Designer.cs">
+      <DependentUpon>CalendarioPrueba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comenzar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,13 @@
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventosOrm.cs" />
+    <Compile Include="Models\Generos.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GenerosMuscicalesOrm.cs" />
+    <Compile Include="Models\GenerosMusicos.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Local.cs">
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
@@ -135,6 +148,9 @@
     </Compile>
     <Compile Include="Models\MusicoOrm.cs" />
     <Compile Include="Models\Orm.cs" />
+    <Compile Include="Models\Permisos.cs">
+      <DependentUpon>ArmoniiEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
@@ -163,6 +179,9 @@
     <EmbeddedResource Include="Administradores.resx">
       <DependentUpon>Administradores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="anadirAdmin.resx">
+      <DependentUpon>anadirAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="anadirLocal.resx">
       <DependentUpon>anadirLocal.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calendario.resx">
       <DependentUpon>Calendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarioPrueba.resx">
+      <DependentUpon>CalendarioPrueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comenzar.resx">
       <DependentUpon>Comenzar.cs</DependentUpon>

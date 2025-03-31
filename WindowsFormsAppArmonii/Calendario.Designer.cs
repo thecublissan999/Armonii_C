@@ -30,32 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.GroupBox groupBox1;
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.dgvEventos = new System.Windows.Forms.DataGridView();
-            this.bindingSourceEventos = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreLocal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreArtistico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceEventos = new System.Windows.Forms.BindingSource(this.components);
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.btnAtras = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEventos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(381, 18);
-            this.monthCalendar1.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.monthCalendar1.MaxSelectionCount = 2;
-            this.monthCalendar1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.ShowToday = false;
-            this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // groupBox1
             // 
@@ -83,16 +72,15 @@
             this.dgvEventos.DataSource = this.bindingSourceEventos;
             this.dgvEventos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEventos.Location = new System.Drawing.Point(3, 18);
+            this.dgvEventos.MultiSelect = false;
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.ReadOnly = true;
+            this.dgvEventos.RowHeadersVisible = false;
             this.dgvEventos.RowHeadersWidth = 51;
             this.dgvEventos.RowTemplate.Height = 24;
+            this.dgvEventos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEventos.Size = new System.Drawing.Size(926, 174);
             this.dgvEventos.TabIndex = 0;
-            // 
-            // bindingSourceEventos
-            // 
-            this.bindingSourceEventos.DataSource = typeof(WindowsFormsAppArmonii.Models.EventosOrm.EventoConMusico);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -153,6 +141,21 @@
             this.nombreArtistico.Name = "nombreArtistico";
             this.nombreArtistico.ReadOnly = true;
             this.nombreArtistico.Width = 129;
+            // 
+            // bindingSourceEventos
+            // 
+            this.bindingSourceEventos.DataSource = typeof(WindowsFormsAppArmonii.Models.EventosOrm.EventoConMusico);
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(381, 18);
+            this.monthCalendar1.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.monthCalendar1.MaxSelectionCount = 2;
+            this.monthCalendar1.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.ShowToday = false;
+            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // btnAtras
             // 

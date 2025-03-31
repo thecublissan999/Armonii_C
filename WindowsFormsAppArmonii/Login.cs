@@ -25,7 +25,6 @@ namespace WindowsFormsAppArmonii
 
         private void logearse()
         {
-            bool correctUser;
             string correo = tbUser.Text;
             string contra = tbContraseña.Text;
             if (correo == "" || contra == "")

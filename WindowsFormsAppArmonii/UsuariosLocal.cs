@@ -14,7 +14,7 @@ namespace WindowsFormsAppArmonii
 {
     public partial class UsuariosLocal : Form
     {
-        UsuarioOrm.UsuarioLocal usuarioLocalSeleccionado = null;
+        UsuarioLocal usuarioLocalSeleccionado = null;
         public UsuariosLocal()
         {
             InitializeComponent();
@@ -32,6 +32,12 @@ namespace WindowsFormsAppArmonii
         {
             anadirLocal nuevoFormulario = new anadirLocal(usuarioLocalSeleccionado);
             nuevoFormulario.Show();
+
+            // Suscribirse al evento FormClosed usando una lambda
+            nuevoFormulario.FormClosed += (s, args) =>
+            {
+                bindingSourceUsers.DataSource = ObtenerUsuarioLocal();
+            };
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -74,6 +80,10 @@ namespace WindowsFormsAppArmonii
                     // Crear e inicializar el formulario con el objeto usuarioLocalSeleccionado
                     anadirLocal nuevoFormulario = new anadirLocal(usuarioLocalSeleccionado);
                     nuevoFormulario.Show();
+                    nuevoFormulario.FormClosed += (s, args) =>
+                    {
+                        bindingSourceUsers.DataSource = ObtenerUsuarioLocal();
+                    };
                 }
                 catch (Exception ex)
                 {
@@ -102,12 +112,13 @@ namespace WindowsFormsAppArmonii
                     try
                     {
                         // Aquí debes llamar a un método para eliminar el usuario de la base de datos
-                        EliminarUsuario(usuarioId);
+                        EliminarLocal(usuarioId);
 
                         // Eliminar la fila seleccionada del DataGridView
                         dgvUsuarios.Rows.RemoveAt(dgvUsuarios.SelectedRows[0].Index);
 
                         MessageBox.Show("Usuario eliminado correctamente.");
+                        bindingSourceUsers.DataSource = ObtenerUsuarioLocal(); // Actualizar el DataGridView
                     }
                     catch (Exception ex)
                     {

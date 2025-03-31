@@ -19,67 +19,157 @@ namespace WindowsFormsAppArmonii
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);
 
         private const int EM_SETCUEBANNER = 0x1501;
-
-        public anadirMusico()
+        UsuarioMusico musico;
+        public anadirMusico(UsuarioMusico usuarioMusicoSeleccionado)
         {
             InitializeComponent();
+            musico = usuarioMusicoSeleccionado;
+            rellenarCBGenerosMusicales();
+            rellenarCBGeneros();
 
-            // Agregar los hints a los TextBox (para TextBox no multilinea)
-            SendMessage(tbNombre.Handle, EM_SETCUEBANNER, 0, "Nombre");
-            SendMessage(tbApellido.Handle, EM_SETCUEBANNER, 0, "Apellido");
-            SendMessage(tbEdad.Handle, EM_SETCUEBANNER, 0, "Edad");
-            SendMessage(tbCorreo.Handle, EM_SETCUEBANNER, 0, "Correo");
-            SendMessage(tbTelefono.Handle, EM_SETCUEBANNER, 0, "Teléfono");
-            SendMessage(tbContra.Handle, EM_SETCUEBANNER, 0, "Contraseña");
-            SendMessage(tbRepiteContra.Handle, EM_SETCUEBANNER, 0, "Repite Contraseña");
-            SendMessage(tbGeneroMusical.Handle, EM_SETCUEBANNER, 0, "Género");
+            // Establecer los hints en los TextBox
+            SetHintText(tbNombre, "Nombre");
+            SetHintText(tbApellido, "Apellido");
+            SetHintText(tbEdad, "Edad");
+            SetHintText(tbCorreo, "Correo Electrónico");
+            SetHintText(tbTelefono, "Teléfono");
+            SetHintText(tbContra, "Contraseña");
+            SetHintText(tbRepiteContra, "Repite la contraseña");
+            SetHintText(tbBiografia, "Biografía");
 
-            // Agregar hint al TextBox Multilinea de Biografía
-            SetBiografiaHint(tbBiografia);
-        }
-
-        // Método para agregar el hint al TextBox Multilinea
-        private void SetBiografiaHint(TextBox tbBiografia)
-        {
-            tbBiografia.Text = "Biografía";
-            tbBiografia.ForeColor = Color.Gray;
-            tbBiografia.Enter += RemoveBiografiaHint;
-            tbBiografia.Leave += SetBiografiaHint;
-        }
-
-        // Evento cuando el TextBox Biografía obtiene foco (se borra el hint)
-        private void RemoveBiografiaHint(object sender, EventArgs e)
-        {
-            if (tbBiografia.Text == "Biografía")
+            // Comprobar si el objeto usuarioMusicoSeleccionado no es nulo
+            if (musico != null)
             {
-                tbBiografia.Text = "";
-                tbBiografia.ForeColor = Color.Black;
+                // Llenar los TextBox con los valores del objeto
+                FillTextBox(tbNombre, musico.nombre, "Nombre");
+                FillTextBox(tbApellido, musico.apellido, "Apellido");
+                FillTextBox(tbEdad, musico.edad.ToString(), "Edad");
+                FillTextBox(tbCorreo, musico.correo, "Correo Electrónico");
+                FillTextBox(tbTelefono, musico.telefono, "Teléfono");
+                FillTextBox(tbContra, musico.contrasenya, "Contraseña");
+                FillTextBox(tbRepiteContra, musico.contrasenya, "Repite la contraseña");
+
+                // Asignar directamente el string de generoMusical al TextBox
+                // Limpiar la ListBox antes de llenarla
+                lbGenerosMusicales.Items.Clear();
+
+                // Verificar si la propiedad generoMusical no está vacía
+                if (!string.IsNullOrEmpty(musico.generoMusical))
+                {
+                    // Dividir la cadena de géneros musicales por comas
+                    string[] generosMusicales = musico.generoMusical.Split(',');
+
+                    // Agregar los géneros a la ListBox
+                    foreach (var genero in generosMusicales)
+                    {
+                        lbGenerosMusicales.Items.Add(genero.Trim()); // 'Trim()' para eliminar posibles espacios en blanco
+                    }
+                }
+                FillTextBox(tbBiografia, musico.biografia, "Biografía");
+
+                string[] generos = cbGenero.Items.Cast<string>().ToArray();
+                int pos = 0;
+                foreach (var genero in generos)
+                {
+                     if (genero == musico.genero)
+                    {
+                        pos = Array.IndexOf(generos, musico.genero);
+                    }
+                }
+                cbGenero.SelectedIndex = pos;
+                
+            }
+
+        }
+
+        private void rellenarCBGeneros()
+        {
+            // Limpiar el ListBox antes de llenarlo (por si ya tiene elementos)
+            lbGenerosMusicales.Items.Clear();
+
+            cbGenero.Items.Add("Hombre");
+            cbGenero.Items.Add("Mujer");
+            cbGenero.Items.Add("Otro");
+            cbGenero.SelectedIndex = 0;
+        }
+
+        private void rellenarCBGenerosMusicales()
+        {
+            // Llamar a la función ObtenerGeneros para obtener la lista de géneros musicales
+            List<string> generos = GenerosMuscicalesOrm.ObtenerGeneros();
+
+            // Limpiar el ListBox antes de llenarlo (por si ya tiene elementos)
+            lbGenerosMusicales.Items.Clear();
+
+            cbGenerosMusicales.Items.Add("Selecciona un género");
+
+
+            // Rellenar el ListBox con los géneros musicales
+            foreach (var genero in generos)
+            {
+                cbGenerosMusicales.Items.Add(genero);
+            }
+            cbGenerosMusicales.SelectedIndex = 0;
+        }
+
+        // Método para llenar los TextBox de forma segura
+        private void FillTextBox(TextBox textBox, string value, string hintText)
+        {
+            if (!string.IsNullOrEmpty(value)) // Si el valor no es null o vacío
+            {
+                textBox.Text = value;
+                textBox.ForeColor = Color.Black; // Asegurarse de que el color sea negro
+            }
+            else
+            {
+                // Si el valor está vacío, establecer el hint
+                SetHintText(textBox, hintText);
             }
         }
 
-        // Evento cuando el TextBox Biografía pierde foco (si está vacío, se restablece el hint)
-        private void SetBiografiaHint(object sender, EventArgs e)
+        // Método para configurar los hints
+        private void SetHintText(TextBox textBox, string hintText)
         {
-            if (string.IsNullOrWhiteSpace(tbBiografia.Text))
+            textBox.Text = hintText;
+            textBox.ForeColor = Color.Gray; // Color gris para el hint
+            textBox.GotFocus += (sender, e) => RemoveHintText(textBox, hintText);
+            textBox.LostFocus += (sender, e) => AddHintText(textBox, hintText);
+        }
+
+        // Método para quitar el hint cuando el textbox recibe el foco
+        private void RemoveHintText(TextBox textBox, string hintText)
+        {
+            if (textBox.Text == hintText)
             {
-                tbBiografia.Text = "Biografía";
-                tbBiografia.ForeColor = Color.Gray;
+                textBox.Text = "";
+                textBox.ForeColor = Color.Black; // Texto de usuario
             }
         }
+
+        // Método para agregar el hint cuando el textbox pierde el foco y está vacío
+        private void AddHintText(TextBox textBox, string hintText)
+        {
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = hintText;
+                textBox.ForeColor = Color.Gray; // Color gris para el hint
+            }
+        }
+
 
         private void btnAnadirGenero_Click(object sender, EventArgs e)
         {
-            // Verifica si el campo tbGeneroMusical no está vacío
-            if (!string.IsNullOrWhiteSpace(tbGeneroMusical.Text))
+            // Verifica si hay algún género seleccionado en el ComboBox
+            if (!string.IsNullOrWhiteSpace(cbGenerosMusicales.Text) && cbGenerosMusicales.Text != "Selecciona un género")
             {
                 // Verificar si el género ya está en el ListBox
-                if (!lbGenerosMusicales.Items.Contains(tbGeneroMusical.Text))
+                if (!lbGenerosMusicales.Items.Contains(cbGenerosMusicales.Text))
                 {
-                    // Agregar el texto de tbGeneroMusical al ListBox lbGeneroMusical
-                    lbGenerosMusicales.Items.Add(tbGeneroMusical.Text);
+                    // Agregar el género del ComboBox al ListBox
+                    lbGenerosMusicales.Items.Add(cbGenerosMusicales.Text);
 
-                    // Opcional: Limpiar el TextBox tbGeneroMusical después de agregar el género
-                    tbGeneroMusical.Clear();
+                    // Opcional: Limpiar el ComboBox después de agregar el género
+                    cbGenerosMusicales.SelectedIndex = 0;  // Vuelve a poner el primer ítem por defecto (hint)
                 }
                 else
                 {
@@ -88,7 +178,7 @@ namespace WindowsFormsAppArmonii
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un género musical.");
+                MessageBox.Show("Por favor, seleccione un género musical.");
             }
         }
 
@@ -108,6 +198,69 @@ namespace WindowsFormsAppArmonii
         }
 
         private void btnGuardarMusico_Click(object sender, EventArgs e)
+        {
+            if (musico == null)
+            {
+                CrearMusico();
+
+            }
+            else
+            {
+                ModificarMusico();
+            }
+        }
+
+        private void ModificarMusico()
+        {
+            try
+            {
+                // Verifica si las contraseñas coinciden
+                if (tbContra.Text == tbRepiteContra.Text)
+                {
+                    // Asignar valores de los TextBox al objeto musico
+                    musico.nombre = tbNombre.Text;
+                    musico.apellido = tbApellido.Text;
+                    musico.telefono = tbTelefono.Text;
+                    musico.correo = tbCorreo.Text;
+                    musico.contrasenya = tbContra.Text;
+                    musico.biografia = tbBiografia.Text;
+                    musico.genero = cbGenero.Text;
+
+                    // Convertir la edad de texto a entero (si es válido)
+                    musico.edad = int.TryParse(tbEdad.Text, out int edad) ? edad : 0;
+
+                    // Obtener todos los géneros musicales seleccionados en el ListBox o ComboBox
+                    // Si es un ListBox
+                    string generosSeleccionados = string.Join(",", lbGenerosMusicales.Items.Cast<string>().ToArray());
+
+                    // Si es un ComboBox, puedes hacer algo similar (si se seleccionan múltiples géneros)
+                    // string generosSeleccionados = string.Join(",", cbGenerosMusicales.SelectedItems.Cast<string>().ToArray());
+
+                    // Asignar los géneros musicales concatenados a la propiedad generoMusical
+                    musico.generoMusical = generosSeleccionados;
+
+                    // Modificar usuario y músico en la base de datos
+                    UsuarioOrm.ModificarUsuarioYMusico(musico);
+
+                    // Mostrar mensaje de éxito
+                    MessageBox.Show("Músico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    // Si las contraseñas no coinciden
+                    MessageBox.Show("Las contraseñas no coinciden. Por favor, intente de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                MessageBox.Show("Error al modificar el músico: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void CrearMusico()
         {
             // Verificar que los campos tbNombre, tbCorreo y tbContra no estén vacíos
             if (string.IsNullOrWhiteSpace(tbNombre.Text) || string.IsNullOrWhiteSpace(tbCorreo.Text) || string.IsNullOrWhiteSpace(tbContra.Text))
@@ -134,15 +287,15 @@ namespace WindowsFormsAppArmonii
             UsuarioMusico usuarioMusico = new UsuarioMusico();
             Usuario usuario = new Usuario();
             Musico musico = new Musico();
-            usuario.nombre = tbNombre.Text;
-            usuario.correo = tbCorreo.Text;
-            usuario.contrasenya = tbContra.Text;
-            usuario.telefono = tbTelefono.Text;
-            usuario.fechaRegistro = DateTime.Now;
-            usuario.estado = true;
-            musico.edad = edad;
-            musico.biografia = tbBiografia.Text;
-            musico.genero = string.Join(", ", lbGenerosMusicales.Items.Cast<string>());
+            //usuario.nombre = tbNombre.Text;
+            //usuario.correo = tbCorreo.Text;
+            //usuario.contrasenya = tbContra.Text;
+            //usuario.telefono = tbTelefono.Text;
+            //usuario.fechaRegistro = DateTime.Now;
+            //usuario.estado = true;
+            //musico.edad = edad;
+            //musico.biografia = tbBiografia.Text;
+            //musico.genero = string.Join(", ", lbGenerosMusicales.Items.Cast<string>());
 
             // Asignar los valores de los TextBox a las propiedades del objeto UsuarioMusico
             usuarioMusico.nombre = tbNombre.Text;
@@ -150,6 +303,8 @@ namespace WindowsFormsAppArmonii
             usuarioMusico.correo = tbCorreo.Text;
             usuarioMusico.contrasenya = tbContra.Text; // Asignar la contraseña
             usuarioMusico.telefono = tbTelefono.Text;
+            usuarioMusico.genero = cbGenero.Text;
+
 
             // Asignar la edad como valor entero
             usuarioMusico.edad = edad;
@@ -167,11 +322,14 @@ namespace WindowsFormsAppArmonii
             usuarioMusico.valoracion = 0.0; // Si no hay valor de valoración, lo dejamos en 0
 
             // Convertir la lista de géneros a un string (con un delimitador como coma)
-            usuarioMusico.genero = string.Join(", ", lbGenerosMusicales.Items.Cast<string>());
+            string generosSeleccionados = string.Join(",", lbGenerosMusicales.Items.Cast<string>().ToArray());
+            usuarioMusico.generoMusical = generosSeleccionados;
 
             // Si es necesario mostrar o usar el objeto `usuarioMusico`, puedes hacerlo aquí
             // Ejemplo de mostrar el contenido del objeto en un MessageBox
-            MessageBox.Show($"Usuario guardado: {musico.genero} - {usuarioMusico.genero}");
+            CrearUsuarioYMusico(usuarioMusico);
+            MessageBox.Show("Musico guardado exitosamente.");
+            this.Close(); // Cerrar el formulario actual
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

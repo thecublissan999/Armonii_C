@@ -29,9 +29,9 @@ namespace WindowsFormsAppArmonii.Models
         public Nullable<bool> estado { get; set; }
         public int duracion { get; set; }
     
-        public virtual Local Local { get; set; }
-        public virtual Musico Musico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Valoracion> Valoracion { get; set; }
+        public virtual Local Local { get; set; }
+        public virtual Musico Musico { get; set; }
     }
 }

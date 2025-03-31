@@ -9,8 +9,8 @@ namespace WindowsFormsAppArmonii.Models
     public static class UsuarioAdminOrm
     {
         public static UsuarioAdmin SelectLogin(string correo)
-        {
-            return Orm.bd.UsuarioAdmin.FirstOrDefault(c => c.correo == correo);
+        {            
+                return Orm.bd.UsuarioAdmin.FirstOrDefault(c => c.correo == correo);
         }
     }
 }

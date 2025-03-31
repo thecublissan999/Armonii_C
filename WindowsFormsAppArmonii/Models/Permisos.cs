@@ -12,28 +12,18 @@ namespace WindowsFormsAppArmonii.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Local
+    public partial class Permisos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Local()
+        public Permisos()
         {
-            this.Evento = new HashSet<Evento>();
-            this.Valoracion = new HashSet<Valoracion>();
+            this.UsuarioAdmin = new HashSet<UsuarioAdmin>();
         }
     
         public int id { get; set; }
-        public string direccion { get; set; }
-        public string tipo_local { get; set; }
-        public string descripcion { get; set; }
-        public string imagen { get; set; }
-        public Nullable<System.TimeSpan> horarioApertura { get; set; }
-        public Nullable<System.TimeSpan> horarioCierre { get; set; }
-        public Nullable<int> idUsuario { get; set; }
+        public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evento> Evento { get; set; }
-        public virtual Usuario Usuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Valoracion> Valoracion { get; set; }
+        public virtual ICollection<UsuarioAdmin> UsuarioAdmin { get; set; }
     }
 }

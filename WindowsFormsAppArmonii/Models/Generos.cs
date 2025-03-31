@@ -12,30 +12,17 @@ namespace WindowsFormsAppArmonii.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Musico
+    public partial class Generos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Musico()
+        public Generos()
         {
-            this.Evento = new HashSet<Evento>();
-            this.Valoracion = new HashSet<Valoracion>();
             this.GenerosMusicos = new HashSet<GenerosMusicos>();
         }
     
         public int id { get; set; }
-        public string apodo { get; set; }
-        public string apellido { get; set; }
         public string genero { get; set; }
-        public Nullable<int> edad { get; set; }
-        public string biografia { get; set; }
-        public string imagen { get; set; }
-        public Nullable<int> idUsuario { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evento> Evento { get; set; }
-        public virtual Usuario Usuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Valoracion> Valoracion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GenerosMusicos> GenerosMusicos { get; set; }
     }

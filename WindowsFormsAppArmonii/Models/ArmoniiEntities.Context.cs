@@ -26,11 +26,14 @@ namespace WindowsFormsAppArmonii.Models
         }
     
         public virtual DbSet<Evento> Evento { get; set; }
-        public virtual DbSet<Local> Local { get; set; }
         public virtual DbSet<Mensaje> Mensaje { get; set; }
-        public virtual DbSet<Musico> Musico { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Valoracion> Valoracion { get; set; }
         public virtual DbSet<UsuarioAdmin> UsuarioAdmin { get; set; }
+        public virtual DbSet<Local> Local { get; set; }
+        public virtual DbSet<Musico> Musico { get; set; }
+        public virtual DbSet<Generos> Generos { get; set; }
+        public virtual DbSet<GenerosMusicos> GenerosMusicos { get; set; }
+        public virtual DbSet<Permisos> Permisos { get; set; }
     }
 }

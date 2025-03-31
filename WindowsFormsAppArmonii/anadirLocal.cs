@@ -104,9 +104,24 @@ namespace WindowsFormsAppArmonii
         {
             try
             {
-                UsuarioOrm.ModificarUsuarioYLocal(local);
-                MessageBox.Show("Local modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if (tbContra.Text == tbRepiteContra.Text)
+                {
+                    local.nombre = tbNombre.Text;
+                    local.direccion = tbDireccion.Text;
+                    local.telefono = tbTelefono.Text;
+                    local.correo = tbCorreo.Text;
+                    local.contrasenya = tbContra.Text;
+                    local.tipo_local = tbTipoLocal.Text;
+                    local.descripcion = tbDescripcion.Text;
+
+                    UsuarioOrm.ModificarUsuarioYLocal(local);
+                    MessageBox.Show("Local modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Las contraseñas no coinciden. Por favor, intente de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
