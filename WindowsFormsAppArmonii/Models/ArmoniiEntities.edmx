@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="descripcion" Type="text" />
           <Property Name="idLocal" Type="int" Nullable="false" />
           <Property Name="idMusico" Type="int" Nullable="false" />
@@ -332,7 +332,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="idLocal" Type="Int32" Nullable="false" />
           <Property Name="idMusico" Type="Int32" Nullable="false" />

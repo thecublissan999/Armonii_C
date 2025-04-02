@@ -117,30 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="imgDerecha.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAOJJREFUSEvtlb0NwjAQhR+ko2MEZmAJEHVWQMo5EhMAu7ACzAEdNFT8dAxAgx5K
-        IhFxNqKITYTkT3pN7qxPsc42EIlEHBDoMEWivweHBjsKjsww1LWg0IBlBHcaTHU9GC9xnRWn6Ok+7zjE
-        xd9vmWOge71iSWv5jYKR7n+DGSYUXK3FTSN4UDAvJl87S2hwsRb5jGDNDH3t/bxdfrO3zrujyX8EB1ss
-        OFuNfrNxb3WOMQ1OjgXNUgyXwYJLdLWzMZasln4/Tk2whJW0lQvkx1dm9UjMdD0Y7T2LKZIgUxuJ/BVP
-        +eXwLDwg6aMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="imgIzquierda.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAM5JREFUSEvtlbsNwjAQhn8eJRUSQzAD7ECVIfAFISZIyyYswQD00FIiKENLwY+C
-        MAp2OnK2EP6ka+yzPvn8OCCR+GsIdFig746rwjnGFOwpODJDz51XgQYzCkoK+IwVhm5Oq1RlpcGagvtb
-        qi3mAiMKth9CbTENpjQ4eUJNMQVLCm6e7Ps4M0fm+qpdDmiwaVjQXhhcvRdBwc5L1Aj3mOKJY5Xaona5
-        DC6Nl6sOc0yCPydLlA/EEuXLrBO8SdR5tcVD0LZoYYFucGki8TM8ACwT/rmhhqFgAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="bsEventos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="bsEventos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

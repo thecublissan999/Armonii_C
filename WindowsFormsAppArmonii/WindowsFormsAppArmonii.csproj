@@ -151,6 +151,7 @@
     <Compile Include="Models\Permisos.cs">
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PermisosOrm.cs" />
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
@@ -164,6 +165,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucDias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDias.Designer.cs">
+      <DependentUpon>ucDias.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuariosLocal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +220,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucDias.resx">
+      <DependentUpon>ucDias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuariosLocal.resx">
       <DependentUpon>UsuariosLocal.cs</DependentUpon>
     </EmbeddedResource>

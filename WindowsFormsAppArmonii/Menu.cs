@@ -51,5 +51,12 @@ namespace WindowsFormsAppArmonii
             nuevoFormulario.Show();
             this.Hide();
         }
+
+        private void btnMapa_Click(object sender, EventArgs e)
+        {
+            CalendarioPrueba nuevoFormulario = new CalendarioPrueba();
+            nuevoFormulario.Show();
+            this.Hide();
+        }
     }
 }

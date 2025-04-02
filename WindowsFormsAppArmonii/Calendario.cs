@@ -26,7 +26,7 @@ namespace WindowsFormsAppArmonii
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            bindingSourceEventos.DataSource = EventosOrm.ObtenerEventosConMusico(e.Start);
+            //bindingSourceEventos.DataSource = EventosOrm.ObtenerEventosConMusico(e.Start);
             dgvEventos.DataSource = bindingSourceEventos.DataSource;
 
         }

@@ -30,6 +30,7 @@ namespace WindowsFormsAppArmonii
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
+            usuarioLocalSeleccionado = null;
             anadirLocal nuevoFormulario = new anadirLocal(usuarioLocalSeleccionado);
             nuevoFormulario.Show();
 

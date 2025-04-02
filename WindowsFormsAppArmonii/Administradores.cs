@@ -19,7 +19,7 @@ namespace WindowsFormsAppArmonii
         public Administradores()
         {
             InitializeComponent();
-            bsAdmin.DataSource = obtenerAdmins();
+            bsAdmin.DataSource = ObtenerAdmins();
         }
 
         private void btnatras_Click(object sender, EventArgs e)
@@ -32,11 +32,12 @@ namespace WindowsFormsAppArmonii
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
+            administradorSeleccionado = null;
             anadirAdmin nuevoFormulario = new anadirAdmin(administradorSeleccionado);
             nuevoFormulario.Show();
             nuevoFormulario.FormClosed += (s, args) =>
             {
-                bsAdmin.DataSource = Models.AdminOrm.obtenerAdmins();
+                bsAdmin.DataSource = ObtenerAdmins();
             };
         }
 
@@ -62,7 +63,7 @@ namespace WindowsFormsAppArmonii
                     administradorSeleccionado.correo = filaSeleccionada.Cells[2].Value?.ToString() ?? string.Empty;   // Evitar null
                     administradorSeleccionado.contrasenya = filaSeleccionada.Cells[3].Value?.ToString() ?? string.Empty; // Evitar null
                     administradorSeleccionado.telefono = filaSeleccionada.Cells[4].Value?.ToString() ?? string.Empty;   // Evitar null
-                    administradorSeleccionado.permiso = Convert.ToInt32(filaSeleccionada.Cells[5].Value);
+                    administradorSeleccionado.permiso = filaSeleccionada.Cells[5].Value?.ToString() ?? string.Empty;   // Evitar null
 
 
 
@@ -71,7 +72,7 @@ namespace WindowsFormsAppArmonii
                     nuevoFormulario.Show();
                     nuevoFormulario.FormClosed += (s, args) =>
                     {
-                        bsAdmin.DataSource = ObtenerUsuarioMusico();
+                        bsAdmin.DataSource = ObtenerAdmins();
                     };
                 }
                 catch (Exception ex)
@@ -107,7 +108,7 @@ namespace WindowsFormsAppArmonii
                         dgvAdmins.Rows.RemoveAt(dgvAdmins.SelectedRows[0].Index);
 
                         MessageBox.Show("Usuario eliminado correctamente.");
-                        bsAdmin.DataSource = obtenerAdmins(); // Actualizar el DataGridView
+                        bsAdmin.DataSource = ObtenerAdmins(); // Actualizar el DataGridView
                     }
                     catch (Exception ex)
                     {

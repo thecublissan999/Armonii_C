@@ -89,7 +89,7 @@ namespace WindowsFormsAppArmonii
 
             cbGenero.Items.Add("Hombre");
             cbGenero.Items.Add("Mujer");
-            cbGenero.Items.Add("Otro");
+            cbGenero.Items.Add("Otros");
             cbGenero.SelectedIndex = 0;
         }
 
@@ -287,15 +287,6 @@ namespace WindowsFormsAppArmonii
             UsuarioMusico usuarioMusico = new UsuarioMusico();
             Usuario usuario = new Usuario();
             Musico musico = new Musico();
-            //usuario.nombre = tbNombre.Text;
-            //usuario.correo = tbCorreo.Text;
-            //usuario.contrasenya = tbContra.Text;
-            //usuario.telefono = tbTelefono.Text;
-            //usuario.fechaRegistro = DateTime.Now;
-            //usuario.estado = true;
-            //musico.edad = edad;
-            //musico.biografia = tbBiografia.Text;
-            //musico.genero = string.Join(", ", lbGenerosMusicales.Items.Cast<string>());
 
             // Asignar los valores de los TextBox a las propiedades del objeto UsuarioMusico
             usuarioMusico.nombre = tbNombre.Text;

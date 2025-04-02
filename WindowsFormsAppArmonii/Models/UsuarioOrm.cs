@@ -176,7 +176,7 @@ namespace WindowsFormsAppArmonii.Models
                     }
                 }
         }
-        public static void CrearAdmin(UsuarioAdminDTO admin)
+        public static void CrearAdmin(UsuarioAdmin admin)
         {
             using (var transaction = Orm.bd.Database.BeginTransaction())
             {
@@ -220,12 +220,14 @@ namespace WindowsFormsAppArmonii.Models
                         throw new Exception("El usuario con el ID proporcionado no existe.");
                     }
 
+                    int idPermiso = PermisosOrm.ObtenerIdPermiso(adminSeleccionado.permiso);
+
                     // Actualizar el Usuario
                     admin.nombre = adminSeleccionado.nombre;
                     admin.correo = adminSeleccionado.correo;
                     admin.contrasenya = adminSeleccionado.contrasenya;
                     admin.telefono = adminSeleccionado.telefono;
-                    admin.permiso = adminSeleccionado.permiso;
+                    admin.permiso = idPermiso;
 
                     // Guardar cambios en la base de datos
                     Orm.bd.SaveChanges();

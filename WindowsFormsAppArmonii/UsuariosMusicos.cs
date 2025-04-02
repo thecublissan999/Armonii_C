@@ -31,6 +31,7 @@ namespace WindowsFormsAppArmonii
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
+            usuarioMusicoSeleccionado = null;
             anadirMusico nuevoFormulario = new anadirMusico(usuarioMusicoSeleccionado);
             nuevoFormulario.Show();
 

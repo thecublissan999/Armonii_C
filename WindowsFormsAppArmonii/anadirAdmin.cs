@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsAppArmonii.Models;
 using static WindowsFormsAppArmonii.Models.AdminOrm;
+using static WindowsFormsAppArmonii.Models.PermisosOrm;
 using static WindowsFormsAppArmonii.Models.UsuarioOrm;
 
 namespace WindowsFormsAppArmonii
@@ -27,7 +28,7 @@ namespace WindowsFormsAppArmonii
             admin = administradorSeleccionado;
 
             // Configurar el ComboBox con el permiso del administrador
-            ConfigurarComboBox(cbPermisos, admin?.permiso);
+            ConfigurarComboBox(cbPermisos, admin.permiso);
 
             // Establecer los hints en los TextBox
             SetHintText(tbNombre, "Nombre");
@@ -49,29 +50,24 @@ namespace WindowsFormsAppArmonii
         }
 
         // Método para configurar el ComboBox con hint y valores, y seleccionar el permiso si existe
-        private void ConfigurarComboBox(ComboBox comboBox, int? permiso)
+        private void ConfigurarComboBox(ComboBox comboBox, string permisoNombre)
         {
             // Limpiar elementos anteriores
             comboBox.Items.Clear();
 
-            // Diccionario para mapear los permisos
-            Dictionary<int, string> permisosDict = new Dictionary<int, string>
-    {
-        { 1, "SuperAdmin" },
-        { 2, "Admin" },
-        { 3, "Organizador" }
-    };
+            // Obtener la lista de permisos desde la base de datos
+            List<PermisoDTO> permisos = ObtenerPermisos();
 
             // Agregar los valores al ComboBox
-            foreach (var permisoItem in permisosDict.Values)
+            foreach (var permisoItem in permisos)
             {
-                comboBox.Items.Add(permisoItem);
+                comboBox.Items.Add(permisoItem.nombre); // Solo agregamos el nombre
             }
 
             // Establecer el permiso si existe
-            if (permiso.HasValue && permisosDict.ContainsKey(permiso.Value))
+            if (!string.IsNullOrEmpty(permisoNombre) && permisos.Any(p => p.nombre == permisoNombre))
             {
-                comboBox.Text = permisosDict[permiso.Value];
+                comboBox.SelectedItem = permisoNombre;
                 comboBox.ForeColor = Color.Black; // Texto en color normal
             }
             else
@@ -99,6 +95,7 @@ namespace WindowsFormsAppArmonii
                 }
             };
         }
+
 
         // Método para llenar los TextBox de forma segura
         private void FillTextBox(TextBox textBox, string value, string hintText)
@@ -146,51 +143,31 @@ namespace WindowsFormsAppArmonii
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            // Convertir la selección del ComboBox a número
-            int permisoSeleccionado = ObtenerNumeroPermiso(cbPermisos.Text);
-
             if (admin == null)
             {
-                CrearAdmin(permisoSeleccionado);
+                CrearAdmin();
             }
             else
             {
-                ModificarAdmin(permisoSeleccionado);
+                ModificarAdmin();
             }
         }
 
-        // Método para obtener el número del permiso desde el ComboBox
-        private int ObtenerNumeroPermiso(string permisoTexto)
+
+
+
+        private void ModificarAdmin()
         {
-            Dictionary<string, int> permisosDict = new Dictionary<string, int>
-    {
-        { "SuperAdmin", 1 },
-        { "Admin", 2 },
-        { "Organizador", 3 }
-    };
-
-            // Intentar obtener el número del diccionario, si no está, devolver 0 como inválido
-            return permisosDict.ContainsKey(permisoTexto) ? permisosDict[permisoTexto] : 0;
-        }
-
-
-        private void ModificarAdmin(int permisoSeleccionado)
-        {
-            // Validar que el permiso sea válido
-            if (permisoSeleccionado < 1 || permisoSeleccionado > 3)
-            {
-                MessageBox.Show("Por favor, seleccione un permiso válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Detener la ejecución del método
-            }
             try
             {
+
                 if (tbContra.Text == tbRepetirContra.Text)
                 {
                     admin.nombre = tbNombre.Text;
                     admin.telefono = tbTelefono.Text;
                     admin.correo = tbCorreo.Text;
                     admin.contrasenya = tbContra.Text;
-                    admin.permiso = permisoSeleccionado;
+                    admin.permiso = cbPermisos.Text;
 
                     UsuarioOrm.ModificarAdmin(admin);
                     MessageBox.Show("Músico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -207,44 +184,61 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void CrearAdmin(int permisoSeleccionado)
+        private void CrearAdmin()
         {
             // Verificar que los campos tbNombre, tbCorreo y tbContra no estén vacíos
             if (string.IsNullOrWhiteSpace(tbNombre.Text) || string.IsNullOrWhiteSpace(tbCorreo.Text) || string.IsNullOrWhiteSpace(tbContra.Text))
             {
-                MessageBox.Show("Por favor, complete todos los campos requeridos: Nombre, Correo, Contraseña.");
+                MessageBox.Show("Por favor, complete todos los campos requeridos: Nombre, Correo, Contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Salir del método si algún campo está vacío
             }
 
             // Verificar si las contraseñas coinciden
             if (tbContra.Text != tbRepetirContra.Text)
             {
-                MessageBox.Show("Las contraseñas no coinciden. Por favor, intente de nuevo.");
+                MessageBox.Show("Las contraseñas no coinciden. Por favor, intente de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Salir del método si las contraseñas no coinciden
             }
 
-            // Validar que el permiso sea válido
-            if (permisoSeleccionado < 1 || permisoSeleccionado > 3)
+            // Validar si se ha seleccionado un permiso válido
+            if (cbPermisos.SelectedItem == null || cbPermisos.Text == "Seleccione un permiso")
             {
                 MessageBox.Show("Por favor, seleccione un permiso válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Detener la ejecución del método
+                return;
             }
 
-            // Crear un objeto UsuarioMusico
-            UsuarioAdminDTO admin = new UsuarioAdminDTO();
+            // Obtener el nombre del permiso seleccionado
+            string permisoSeleccionadoNombre = cbPermisos.SelectedItem.ToString();
 
-            // Asignar los valores de los TextBox a las propiedades del objeto UsuarioMusico
-            admin.nombre = tbNombre.Text;
-            admin.correo = tbCorreo.Text;
-            admin.contrasenya = tbContra.Text; // Asignar la contraseña
-            admin.telefono = tbTelefono.Text;
-            admin.permiso = permisoSeleccionado;
+            // Obtener la lista de permisos desde la base de datos
+            List<PermisoDTO> permisos = ObtenerPermisos();
 
-            // Si es necesario mostrar o usar el objeto `usuarioMusico`, puedes hacerlo aquí
-            // Ejemplo de mostrar el contenido del objeto en un MessageBox
+            // Buscar el ID del permiso seleccionado
+            int permisoId = ObtenerIdPermiso(permisoSeleccionadoNombre);
+
+            // Verificar si se encontró un permiso válido
+            if (permisoId == 0)
+            {
+                MessageBox.Show("Error al obtener el ID del permiso seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Crear un objeto UsuarioAdminDTO
+            UsuarioAdmin admin = new UsuarioAdmin
+            {
+                nombre = tbNombre.Text,
+                correo = tbCorreo.Text,
+                contrasenya = tbContra.Text, // Asignar la contraseña
+                telefono = tbTelefono.Text,
+                permiso = permisoId // Asignar el ID del permiso obtenido
+            };
+
+            // Llamar al método para crear el administrador en la base de datos
             UsuarioOrm.CrearAdmin(admin);
-            MessageBox.Show("Local guardado exitosamente.");
-            this.Close(); // Cerrar el formulario actual        
+
+            MessageBox.Show("Administrador guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close(); // Cerrar el formulario actual
         }
+
     }
 }

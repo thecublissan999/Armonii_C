@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,21 +31,37 @@ namespace WindowsFormsAppArmonii.Models
         }
 
         public static List<EventoConMusico> ObtenerEventosConMusico(DateTime fecha)
-        { 
-
-         var eventosConMusico = (from e in Orm.bd.Evento
+        {
+            var eventosConMusico = (from e in Orm.bd.Evento
                                  join m in Orm.bd.Musico on e.idMusico equals m.id
                                  join u in Orm.bd.Usuario on e.idLocal equals u.id
                                  where e.fecha == fecha
-                                 select new EventoConMusico
-                                 {
-                                     id = e.id,
-                                     nombre = e.nombre,
-                                     fecha = e.fecha,
-                                     descripcion = e.descripcion,
-                                     nombreLocal = u.nombre
-                                 }).ToList();
+                                    select new EventoConMusico
+                                     {
+                                         id = e.id,
+                                         nombre = e.nombre,
+                                         fecha = e.fecha,
+                                         descripcion = e.descripcion,
+                                         nombreLocal = u.nombre,
+                                         nombreArtistico = m.apodo
+                                    }).ToList();
 
+            return eventosConMusico;
+        }
+        public static List<EventoConMusico> SelectAll()
+        {
+            var eventosConMusico = (from e in Orm.bd.Evento
+                                    join m in Orm.bd.Musico on e.idMusico equals m.id
+                                    join u in Orm.bd.Usuario on e.idLocal equals u.id
+                                    select new EventoConMusico
+                                    {
+                                        id = e.id,
+                                        nombre = e.nombre,
+                                        fecha = e.fecha,
+                                        descripcion = e.descripcion,
+                                        nombreLocal = u.nombre,
+                                        nombreArtistico = m.apodo
+                                    }).ToList();
             return eventosConMusico;
         }
     }
