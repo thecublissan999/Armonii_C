@@ -11,7 +11,32 @@ namespace WindowsFormsAppArmonii
         public Login()
         {
             InitializeComponent();
-            this.DoubleBuffered = true; // Evita parpadeo en la UI
+            this.DoubleBuffered = true; // Reduce parpadeos en el redibujado
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            try
+            {
+                base.OnPaint(e);
+
+                // Definir colores del gradiente
+                Color colorInicio = ColorTranslator.FromHtml("#000000");
+                Color colorFin = ColorTranslator.FromHtml("#2B2B2B");
+
+                // Crear el rectángulo que cubre todo el formulario
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+
+                // Crear un pincel de gradiente lineal
+                using (LinearGradientBrush brush = new LinearGradientBrush(rect, colorInicio, colorFin, LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }          
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al dibujar el fondo: {ex.Message}");
+            }
         }
 
         private void btnLogearse_Click(object sender, EventArgs e)
@@ -24,27 +49,26 @@ namespace WindowsFormsAppArmonii
             string correo = tbUser.Text;
             string contra = tbContraseña.Text;
 
-            if (correo == "" || contra == "")
+            if (string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contra))
             {
                 MessageBox.Show("El campo no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            UsuarioAdmin usuario = UsuarioAdminOrm.SelectLogin(correo);
+            if (usuario == null)
+            {
+                MessageBox.Show("El usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (usuario.contrasenya != contra)
+            {
+                MessageBox.Show("La contraseña está equivocada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                UsuarioAdmin xx = UsuarioAdminOrm.SelectLogin(correo);
-                if (xx == null)
-                {
-                    MessageBox.Show("El usuario no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (xx.contrasenya != contra)
-                {
-                    MessageBox.Show("La contraseña está equivocada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    Menu nuevoFormulario = new Menu();
-                    nuevoFormulario.Show();
-                    this.Close();
-                }
+                Menu nuevoFormulario = new Menu(usuario);
+                nuevoFormulario.Show();
+                this.Close();
             }
         }
 
@@ -53,25 +77,6 @@ namespace WindowsFormsAppArmonii
             if (e.KeyCode == Keys.Enter)
             {
                 logearse();
-            }
-        }
-
-        // 🎨 Dibujar el fondo con un gradiente radial
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            base.OnPaintBackground(e);
-
-            Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.AddEllipse(rect);
-                using (PathGradientBrush brush = new PathGradientBrush(path))
-                {
-                    brush.CenterColor = ColorTranslator.FromHtml("#303030"); // Color central
-                    brush.SurroundColors = new Color[] { ColorTranslator.FromHtml("#0C0C0C") }; // Color de los bordes
-
-                    e.Graphics.FillRectangle(brush, rect);
-                }
             }
         }
     }

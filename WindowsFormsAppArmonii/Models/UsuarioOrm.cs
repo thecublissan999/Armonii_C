@@ -363,8 +363,6 @@ namespace WindowsFormsAppArmonii.Models
             return musico.id;
         }
 
-
-
         public static int ObtenerId(string correo)
         {
             var usuario = Orm.bd.Usuario.FirstOrDefault(u => u.correo == correo);
@@ -375,7 +373,6 @@ namespace WindowsFormsAppArmonii.Models
 
             return usuario.id;
         }
-
 
         public static void ModificarUsuarioYLocal(UsuarioLocal usuarioLocalSeleccionado)
         {
@@ -419,8 +416,6 @@ namespace WindowsFormsAppArmonii.Models
                 }
             }
         }
-
-
 
         public static void EliminarLocal(Int32 usuarioId)
         {
@@ -517,7 +512,6 @@ namespace WindowsFormsAppArmonii.Models
             }
         }
 
-
         public static void EliminarGenerosAntiguos(int usuarioId)
         {
             try
@@ -570,7 +564,6 @@ namespace WindowsFormsAppArmonii.Models
                 MessageBox.Show("Error al agregar los géneros musicales: " + ex.Message);
             }
         }
-
 
         public static void EliminarMusico(Int32 usuarioId)
         {

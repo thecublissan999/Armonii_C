@@ -9,32 +9,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsAppArmonii
+namespace LocationMap
 {
-    public partial class Comenzar : Form
+    public partial class MenuMap: Form
     {
-        public Comenzar()
+        public MenuMap()
         {
             InitializeComponent();
         }
 
-        private void btnComenzar_Click(object sender, EventArgs e)
+        private void buttonMusicos_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
+            MusicoMap form1 = new MusicoMap();
+            form1.Show();
+            this.Close();
         }
 
-        private void Comenzar_KeyDown(object sender, KeyEventArgs e)
+        private void buttonLocales_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Login nuevoFormulario = new Login();
-                nuevoFormulario.Show();
-                this.Hide();
-            }
-        }
+            LocalesMapa locales = new LocalesMapa();
+            locales.Show();
+            this.Close();
 
+        }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             try

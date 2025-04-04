@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,15 +17,18 @@ namespace WindowsFormsAppArmonii
     public partial class UsuariosMusicos : Form
     {
         UsuarioMusico usuarioMusicoSeleccionado = null;
-        public UsuariosMusicos()
+        UsuarioAdmin usuarioSeleccionado = null;
+
+        public UsuariosMusicos(UsuarioAdmin usuarioSeleccionado)
         {
             InitializeComponent();
             bindingSource1.DataSource = ObtenerUsuarioMusico();
+            this.usuarioSeleccionado = usuarioSeleccionado;
         }
 
         private void btnatras_Click(object sender, EventArgs e)
         {
-            Menu nuevoFormulario = new Menu();
+            Menu nuevoFormulario = new Menu(usuarioSeleccionado);
             nuevoFormulario.Show();
             this.Close();
         }
@@ -40,6 +44,30 @@ namespace WindowsFormsAppArmonii
             {
                 bindingSource1.DataSource = ObtenerUsuarioMusico();
             };
+        }
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            try
+            {
+                base.OnPaint(e);
+
+                // Definir colores del gradiente
+                Color colorInicio = ColorTranslator.FromHtml("#000000");
+                Color colorFin = ColorTranslator.FromHtml("#2B2B2B");
+
+                // Crear el rectángulo que cubre todo el formulario
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+
+                // Crear un pincel de gradiente lineal
+                using (LinearGradientBrush brush = new LinearGradientBrush(rect, colorInicio, colorFin, LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al dibujar el fondo: {ex.Message}");
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

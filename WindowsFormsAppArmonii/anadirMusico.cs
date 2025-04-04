@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -80,6 +81,31 @@ namespace WindowsFormsAppArmonii
                 
             }
 
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            try
+            {
+                base.OnPaint(e);
+
+                // Definir colores del gradiente
+                Color colorInicio = ColorTranslator.FromHtml("#000000");
+                Color colorFin = ColorTranslator.FromHtml("#2B2B2B");
+
+                // Crear el rectángulo que cubre todo el formulario
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+
+                // Crear un pincel de gradiente lineal
+                using (LinearGradientBrush brush = new LinearGradientBrush(rect, colorInicio, colorFin, LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al dibujar el fondo: {ex.Message}");
+            }
         }
 
         private void rellenarCBGeneros()

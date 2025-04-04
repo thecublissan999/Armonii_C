@@ -12,7 +12,7 @@ namespace WindowsFormsAppArmonii
 {
     public partial class ucDias : UserControl
     {
-        string _dia, data, semana;
+        string _dia;
         private static ucDias diaSeleccionado = null; // Referencia al día seleccionado
         public event Action<string> DiaSeleccionado; // Evento para notificar cuando se selecciona un día
         private DateTime fecha;
@@ -29,7 +29,7 @@ namespace WindowsFormsAppArmonii
             // Crear la fecha para este día
             if (int.TryParse(dia, out int diaNumero))
             {
-                fecha = new DateTime(CalendarioPrueba._ano, CalendarioPrueba._mes, diaNumero);
+                fecha = new DateTime(Calendario._ano, Calendario._mes, diaNumero);
             }
 
             //if (!string.IsNullOrWhiteSpace(_dia))
@@ -53,7 +53,7 @@ namespace WindowsFormsAppArmonii
 
             if (!string.IsNullOrEmpty(_dia))
             {
-                DateTime fechaSeleccionada = new DateTime(CalendarioPrueba._ano, CalendarioPrueba._mes, int.Parse(_dia));
+                DateTime fechaSeleccionada = new DateTime(Calendario._ano, Calendario._mes, int.Parse(_dia));
                 string fechaFormateada = fechaSeleccionada.ToString("yyyy-MM-dd"); // Formato deseado
 
                 // Invocamos el evento pasando un DateTime (no un string)

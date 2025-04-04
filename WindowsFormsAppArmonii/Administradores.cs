@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsAppArmonii.Models;
 using static WindowsFormsAppArmonii.Models.AdminOrm;
 using static WindowsFormsAppArmonii.Models.UsuarioOrm;
 
@@ -15,19 +17,46 @@ namespace WindowsFormsAppArmonii
     public partial class Administradores : Form
     {
         UsuarioAdminDTO administradorSeleccionado = null;
+        UsuarioAdmin usuarioSeleccionado = null;
 
-        public Administradores()
+        public Administradores(UsuarioAdmin usuario)
         {
             InitializeComponent();
             bsAdmin.DataSource = ObtenerAdmins();
+            usuarioSeleccionado = usuario;
         }
 
         private void btnatras_Click(object sender, EventArgs e)
         {
 
-            Menu nuevoFormulario = new Menu();
+            Menu nuevoFormulario = new Menu(usuarioSeleccionado);
             nuevoFormulario.Show();
             this.Close();
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            try
+            {
+                base.OnPaint(e);
+
+                // Definir colores del gradiente
+                Color colorInicio = ColorTranslator.FromHtml("#000000");
+                Color colorFin = ColorTranslator.FromHtml("#2B2B2B");
+
+                // Crear el rectángulo que cubre todo el formulario
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+
+                // Crear un pincel de gradiente lineal
+                using (LinearGradientBrush brush = new LinearGradientBrush(rect, colorInicio, colorFin, LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al dibujar el fondo: {ex.Message}");
+            }
         }
 
         private void btnAnadir_Click(object sender, EventArgs e)

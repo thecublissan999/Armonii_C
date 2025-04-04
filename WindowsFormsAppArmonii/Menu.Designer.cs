@@ -41,12 +41,14 @@
             // 
             // btnLocal
             // 
+            this.btnLocal.BackColor = System.Drawing.Color.Transparent;
+            this.btnLocal.Image = global::WindowsFormsAppArmonii.Properties.Resources.icons8_edificio_48__1_;
             this.btnLocal.Location = new System.Drawing.Point(150, 116);
             this.btnLocal.Name = "btnLocal";
             this.btnLocal.Size = new System.Drawing.Size(172, 191);
             this.btnLocal.TabIndex = 0;
             this.btnLocal.Text = "Local";
-            this.btnLocal.UseVisualStyleBackColor = true;
+            this.btnLocal.UseVisualStyleBackColor = false;
             this.btnLocal.Click += new System.EventHandler(this.btnLocal_Click);
             // 
             // btnCalendar
