@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -354,9 +356,45 @@ namespace WindowsFormsAppArmonii
             this.Close(); // Cerrar el formulario actual
         }
 
-        private void anadirMusico_Load(object sender, EventArgs e)
+        private void btnContrasena_Click(object sender, EventArgs e)
         {
+            DialogResult resultado = MessageBox.Show(
+            "¿Quieres restablecer la contraseña a \"123456789A\"?",
+            "Confirmar restablecimiento",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+            );
+            if (resultado == DialogResult.Yes)
+            {
+                tbContra.Text = "123456789A";
+                tbRepiteContra.Text = "123456789A";
+                EnviarCorreo();
+            }
+            else
+            {
+                MessageBox.Show("Operación cancelada.");
+            }
+        }
+        private void EnviarCorreo()
+        {
+            try
+            {
+                MailMessage mensaje = new MailMessage();
+                mensaje.From = new MailAddress("soportearmonii@gmail.com");
+                mensaje.To.Add(tbCorreo.Text);
+                mensaje.Subject = "Cambio de su contraseña";
+                mensaje.Body = "Buenas,\n\nLe enviamos este correo para informarle que la contraseña de su cuenta en Armonii ha sido restablecida a: \"123456789A\".\nLe pedimos que cambie la contraseña en su perfil.\n\nEste es un correo enviado de forma automática, no hace falta responder.";
+                SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com", 587);
+                clienteSmtp.Credentials = new NetworkCredential("soportearmonii@gmail.com", "hpnupcwxnfpuaxkh");
+                clienteSmtp.EnableSsl = true;
 
+                clienteSmtp.Send(mensaje);
+                MessageBox.Show("Correo enviado con éxito!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message);
+            }
         }
     }
 }

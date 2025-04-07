@@ -28,23 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnComenzar = new System.Windows.Forms.Button();
+            this.btnComenzar = new WindowsFormsAppArmonii.btnRedondeado();
             this.SuspendLayout();
             // 
             // btnComenzar
             // 
-            this.btnComenzar.Location = new System.Drawing.Point(323, 338);
+            this.btnComenzar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnComenzar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnComenzar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnComenzar.BorderRadius = 20;
+            this.btnComenzar.BorderSize = 0;
+            this.btnComenzar.FlatAppearance.BorderSize = 0;
+            this.btnComenzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComenzar.ForeColor = System.Drawing.Color.White;
+            this.btnComenzar.Location = new System.Drawing.Point(307, 330);
             this.btnComenzar.Name = "btnComenzar";
-            this.btnComenzar.Size = new System.Drawing.Size(97, 23);
+            this.btnComenzar.Size = new System.Drawing.Size(150, 40);
             this.btnComenzar.TabIndex = 0;
             this.btnComenzar.Text = "Comenzar";
-            this.btnComenzar.UseVisualStyleBackColor = true;
+            this.btnComenzar.TextColor = System.Drawing.Color.White;
+            this.btnComenzar.UseVisualStyleBackColor = false;
             this.btnComenzar.Click += new System.EventHandler(this.btnComenzar_Click);
             // 
             // Comenzar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnComenzar);
             this.KeyPreview = true;
@@ -56,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnComenzar;
+        private btnRedondeado btnComenzar;
     }
 }
 

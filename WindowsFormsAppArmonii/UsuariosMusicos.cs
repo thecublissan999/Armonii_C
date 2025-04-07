@@ -24,6 +24,7 @@ namespace WindowsFormsAppArmonii
             InitializeComponent();
             bindingSource1.DataSource = ObtenerUsuarioMusico();
             this.usuarioSeleccionado = usuarioSeleccionado;
+            label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
         }
 
         private void btnatras_Click(object sender, EventArgs e)
@@ -125,7 +126,7 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado alguna fila
             if (dgvUsuarios.SelectedRows.Count > 0)

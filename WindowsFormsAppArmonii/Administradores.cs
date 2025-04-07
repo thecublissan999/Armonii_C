@@ -24,9 +24,10 @@ namespace WindowsFormsAppArmonii
             InitializeComponent();
             bsAdmin.DataSource = ObtenerAdmins();
             usuarioSeleccionado = usuario;
+            label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
         }
 
-        private void btnatras_Click(object sender, EventArgs e)
+        private void btnAtras_Click(object sender, EventArgs e)
         {
 
             Menu nuevoFormulario = new Menu(usuarioSeleccionado);
@@ -59,7 +60,7 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void btnAnadir_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             administradorSeleccionado = null;
             anadirAdmin nuevoFormulario = new anadirAdmin(administradorSeleccionado);
@@ -93,16 +94,22 @@ namespace WindowsFormsAppArmonii
                     administradorSeleccionado.contrasenya = filaSeleccionada.Cells[3].Value?.ToString() ?? string.Empty; // Evitar null
                     administradorSeleccionado.telefono = filaSeleccionada.Cells[4].Value?.ToString() ?? string.Empty;   // Evitar null
                     administradorSeleccionado.permiso = filaSeleccionada.Cells[5].Value?.ToString() ?? string.Empty;   // Evitar null
-
-
-
-                    // Crear e inicializar el formulario con el objeto usuarioLocalSeleccionado
-                    anadirAdmin nuevoFormulario = new anadirAdmin(administradorSeleccionado);
-                    nuevoFormulario.Show();
-                    nuevoFormulario.FormClosed += (s, args) =>
+                    if (administradorSeleccionado.id == usuarioSeleccionado.id)
                     {
-                        bsAdmin.DataSource = ObtenerAdmins();
-                    };
+                        MessageBox.Show("No puedes editar tu propio usuario.");
+                        return;
+                    }
+                    else
+                    {
+                        // Crear e inicializar el formulario con el objeto usuarioLocalSeleccionado
+                        anadirAdmin nuevoFormulario = new anadirAdmin(administradorSeleccionado);
+                        nuevoFormulario.Show();
+                        nuevoFormulario.FormClosed += (s, args) =>
+                        {
+                            bsAdmin.DataSource = ObtenerAdmins();
+                        };
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +122,7 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado alguna fila
             if (dgvAdmins.SelectedRows.Count > 0)
@@ -130,14 +137,22 @@ namespace WindowsFormsAppArmonii
                 {
                     try
                     {
-                        // Aquí debes llamar a un método para eliminar el usuario de la base de datos
-                        EliminarAdmin(usuarioId);
+                        if (usuarioId == usuarioSeleccionado.id)
+                        {
+                            MessageBox.Show("No puedes eliminar tu propio usuario.");
+                            return;
+                        }
+                        else
+                        {
+                            // Aquí debes llamar a un método para eliminar el usuario de la base de datos
+                            EliminarAdmin(usuarioId);
 
-                        // Eliminar la fila seleccionada del DataGridView
-                        dgvAdmins.Rows.RemoveAt(dgvAdmins.SelectedRows[0].Index);
+                            // Eliminar la fila seleccionada del DataGridView
+                            dgvAdmins.Rows.RemoveAt(dgvAdmins.SelectedRows[0].Index);
 
-                        MessageBox.Show("Usuario eliminado correctamente.");
-                        bsAdmin.DataSource = ObtenerAdmins(); // Actualizar el DataGridView
+                            MessageBox.Show("Usuario eliminado correctamente.");
+                            bsAdmin.DataSource = ObtenerAdmins(); // Actualizar el DataGridView
+                        }                        
                     }
                     catch (Exception ex)
                     {

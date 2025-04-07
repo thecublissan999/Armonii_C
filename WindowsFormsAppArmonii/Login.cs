@@ -8,6 +8,8 @@ namespace WindowsFormsAppArmonii
 {
     public partial class Login : Form
     {
+        private btnRedondeado miBoton;
+
         public Login()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace WindowsFormsAppArmonii
                 using (LinearGradientBrush brush = new LinearGradientBrush(rect, colorInicio, colorFin, LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, rect);
-                }          
+                }
             }
             catch (Exception ex)
             {
@@ -47,7 +49,7 @@ namespace WindowsFormsAppArmonii
         private void logearse()
         {
             string correo = tbUser.Text;
-            string contra = tbContraseña.Text;
+            string contra = tbContrasena.Text;
 
             if (string.IsNullOrWhiteSpace(correo) || string.IsNullOrWhiteSpace(contra))
             {
@@ -78,6 +80,11 @@ namespace WindowsFormsAppArmonii
             {
                 logearse();
             }
+        }
+
+        private void btnRedondeado1_Click(object sender, EventArgs e)
+        {
+            logearse();
         }
     }
 }

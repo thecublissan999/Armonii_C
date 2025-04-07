@@ -22,6 +22,7 @@ namespace WindowsFormsAppArmonii
         {
             InitializeComponent();
             this.usuarioSeleccionado = usuarioSeleccionado;
+            label9.Text = "Bienvenido/a, " +usuarioSeleccionado.nombre + "!";
         }
 
         private void CalendarioPrueba_Load(object sender, EventArgs e) 

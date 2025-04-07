@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 using System.Windows.Forms;
 using WindowsFormsAppArmonii.Models;
 
@@ -9,6 +11,8 @@ namespace WindowsFormsAppArmonii
     public partial class anadirLocal : Form
     {
         UsuarioOrm.UsuarioLocal local;
+        private object ex;
+
         public anadirLocal( UsuarioOrm.UsuarioLocal usuarioLocalSeleccionado)
         {
             InitializeComponent();
@@ -36,6 +40,10 @@ namespace WindowsFormsAppArmonii
                 FillTextBox(tbCorreo, local.correo, "Correo Electrónico");
                 FillTextBox(tbTipoLocal, local.tipo_local, "Tipo de Local");
                 FillTextBox(tbDescripcion, local.descripcion, "Descripción del Local");
+            }
+            else
+            {
+                btnContrasena.Visible = false; // Ocultar el botón si no hay local seleccionado
             }
         }
 
@@ -222,6 +230,47 @@ namespace WindowsFormsAppArmonii
                     Console.WriteLine("Error interno: " + ex.InnerException.Message);
                 }
                 throw new Exception("Hubo un error al guardar el local: " + ex.Message);
+            }
+        }
+        private void EnviarCorreo()
+        {
+           try
+            {
+                MailMessage mensaje = new MailMessage();
+                mensaje.From = new MailAddress("soportearmonii@gmail.com");
+                mensaje.To.Add(tbCorreo.Text);
+                mensaje.Subject = "Cambio de su contraseña";
+                mensaje.Body = "Buenas,\n\nLe enviamos este correo para informarle que la contraseña de su cuenta en Armonii ha sido restablecida a: \"123456789A\".\nLe pedimos que cambie la contraseña en su perfil.\n\nEste es un correo enviado de forma automática, no hace falta responder.";
+                SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com", 587);
+                clienteSmtp.Credentials = new NetworkCredential("soportearmonii@gmail.com", "hpnupcwxnfpuaxkh");
+                clienteSmtp.EnableSsl = true;
+
+                clienteSmtp.Send(mensaje);
+                MessageBox.Show("Correo enviado con éxito!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message);
+            }
+        }
+
+        private void btnContrasena_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+            "¿Quieres restablecer la contraseña a \"123456789A\"?",
+            "Confirmar restablecimiento",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+            );
+            if (resultado == DialogResult.Yes)
+            {
+                tbContra.Text = "123456789A";
+                tbRepiteContra.Text = "123456789A";
+                EnviarCorreo();
+            }
+            else
+            {
+                MessageBox.Show("Operación cancelada.");
             }
         }
     }

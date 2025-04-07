@@ -48,10 +48,11 @@
             this.lbGenerosMusicales = new System.Windows.Forms.ListBox();
             this.btnAnadirGenero = new System.Windows.Forms.Button();
             this.btnQuitarGenero = new System.Windows.Forms.Button();
-            this.btnGuardarMusico = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.cbGenerosMusicales = new System.Windows.Forms.ComboBox();
             this.cbGenero = new System.Windows.Forms.ComboBox();
+            this.btnGuardar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnCancelar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnContrasena = new WindowsFormsAppArmonii.btnRedondeado();
             this.SuspendLayout();
             // 
             // label1
@@ -219,26 +220,6 @@
             this.btnQuitarGenero.UseVisualStyleBackColor = true;
             this.btnQuitarGenero.Click += new System.EventHandler(this.btnQuitarGenero_Click);
             // 
-            // btnGuardarMusico
-            // 
-            this.btnGuardarMusico.Location = new System.Drawing.Point(756, 531);
-            this.btnGuardarMusico.Name = "btnGuardarMusico";
-            this.btnGuardarMusico.Size = new System.Drawing.Size(76, 25);
-            this.btnGuardarMusico.TabIndex = 10;
-            this.btnGuardarMusico.Text = "Guardar";
-            this.btnGuardarMusico.UseVisualStyleBackColor = true;
-            this.btnGuardarMusico.Click += new System.EventHandler(this.btnGuardarMusico_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(865, 533);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // cbGenerosMusicales
             // 
             this.cbGenerosMusicales.FormattingEnabled = true;
@@ -255,15 +236,74 @@
             this.cbGenero.Size = new System.Drawing.Size(193, 24);
             this.cbGenero.TabIndex = 19;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnGuardar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnGuardar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGuardar.BorderRadius = 20;
+            this.btnGuardar.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(590, 513);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(150, 40);
+            this.btnGuardar.TabIndex = 20;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextColor = System.Drawing.Color.White;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardarMusico_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnCancelar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BorderRadius = 20;
+            this.btnCancelar.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(746, 513);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(150, 40);
+            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextColor = System.Drawing.Color.White;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnContrasena
+            // 
+            this.btnContrasena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnContrasena.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnContrasena.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnContrasena.BorderRadius = 20;
+            this.btnContrasena.BorderSize = 0;
+            this.btnContrasena.FlatAppearance.BorderSize = 0;
+            this.btnContrasena.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContrasena.ForeColor = System.Drawing.Color.White;
+            this.btnContrasena.Location = new System.Drawing.Point(434, 513);
+            this.btnContrasena.Name = "btnContrasena";
+            this.btnContrasena.Size = new System.Drawing.Size(150, 40);
+            this.btnContrasena.TabIndex = 22;
+            this.btnContrasena.Text = "Restablecer la contraseña";
+            this.btnContrasena.TextColor = System.Drawing.Color.White;
+            this.btnContrasena.UseVisualStyleBackColor = false;
+            this.btnContrasena.Click += new System.EventHandler(this.btnContrasena_Click);
+            // 
             // anadirMusico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(1007, 580);
+            this.Controls.Add(this.btnContrasena);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cbGenero);
             this.Controls.Add(this.cbGenerosMusicales);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardarMusico);
             this.Controls.Add(this.btnQuitarGenero);
             this.Controls.Add(this.btnAnadirGenero);
             this.Controls.Add(this.lbGenerosMusicales);
@@ -284,6 +324,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "anadirMusico";
             this.Text = "anadirUsuario";
             this.ResumeLayout(false);
@@ -313,9 +354,10 @@
         private System.Windows.Forms.ListBox lbGenerosMusicales;
         private System.Windows.Forms.Button btnAnadirGenero;
         private System.Windows.Forms.Button btnQuitarGenero;
-        private System.Windows.Forms.Button btnGuardarMusico;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbGenerosMusicales;
         private System.Windows.Forms.ComboBox cbGenero;
+        private btnRedondeado btnGuardar;
+        private btnRedondeado btnCancelar;
+        private btnRedondeado btnContrasena;
     }
 }

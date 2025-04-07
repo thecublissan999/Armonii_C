@@ -20,13 +20,23 @@ namespace WindowsFormsAppArmonii
         {
             InitializeComponent();
             usuarioSeleccionado = usuario;
-        }
-
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Login nuevoFormulario = new Login();
-            this.Close();
-            nuevoFormulario.ShowDialog();
+            label5.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
+            if (usuarioSeleccionado.permiso != 1)
+            {
+                btnAdministrador.Visible = false;
+                btnMap.Visible = false;
+                btnMusic.Visible = false;
+                btnLocal.Visible = false;
+                btnCalendario.Visible = false;
+                btnMap2.Visible = true;
+                btnLocal2.Visible = true;
+                btnMusico2.Visible = true;
+                btnCalendar2.Visible = true;
+            }
+            else
+            {
+                btnAdministrador.Visible = true;
+            }
         }
 
         private void btnLocal_Click(object sender, EventArgs e)
@@ -43,23 +53,6 @@ namespace WindowsFormsAppArmonii
             this.Hide();
         }
 
-        private void btnCalendar_Click(object sender, EventArgs e)
-        {
-            Calendario nuevoFormulario = new Calendario(usuarioSeleccionado);
-            nuevoFormulario.Show();
-            this.Hide();
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            if (usuarioSeleccionado.permiso == 1)
-            {
-                Administradores nuevoFormulario = new Administradores(usuarioSeleccionado);
-                nuevoFormulario.Show();
-                this.Hide();
-            }
-            
-        }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             try
@@ -85,11 +78,35 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void btnMapa_Click(object sender, EventArgs e)
+        private void btnAdministrador_Click(object sender, EventArgs e)
         {
-            MenuMap nuevoFormulario = new MenuMap();
+            if (usuarioSeleccionado.permiso == 1)
+            {
+                Administradores nuevoFormulario = new Administradores(usuarioSeleccionado);
+                nuevoFormulario.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnCalendario_Click(object sender, EventArgs e)
+        {
+            Calendario nuevoFormulario = new Calendario(usuarioSeleccionado);
             nuevoFormulario.Show();
             this.Hide();
+        }
+
+        private void btnMap_Click(object sender, EventArgs e)
+        {
+            Mapa nuevoFormulario = new Mapa(usuarioSeleccionado);
+            nuevoFormulario.Show();
+            this.Hide();
+        }
+
+        private void btnCerrarSesio_Click(object sender, EventArgs e)
+        {
+            Login nuevoFormulario = new Login();
+            this.Close();
+            nuevoFormulario.ShowDialog();
         }
     }
 }

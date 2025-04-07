@@ -44,10 +44,11 @@
             this.valoracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceUsers = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAnadir = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.btnatras = new System.Windows.Forms.Button();
+            this.btnAtras = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnEliminar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.BtnEditar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnAnadir = new WindowsFormsAppArmonii.btnRedondeado();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsers)).BeginInit();
@@ -56,6 +57,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
             this.groupBox1.Controls.Add(this.dgvUsuarios);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(48, 110);
@@ -221,55 +223,105 @@
             this.dataGridView1.Size = new System.Drawing.Size(1207, 453);
             this.dataGridView1.TabIndex = 0;
             // 
+            // btnAtras
+            // 
+            this.btnAtras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnAtras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnAtras.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAtras.BorderRadius = 20;
+            this.btnAtras.BorderSize = 0;
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.ForeColor = System.Drawing.Color.White;
+            this.btnAtras.Location = new System.Drawing.Point(51, 64);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(76, 40);
+            this.btnAtras.TabIndex = 5;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.TextColor = System.Drawing.Color.White;
+            this.btnAtras.UseVisualStyleBackColor = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnatras_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.Red;
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 20;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(1139, 64);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(103, 40);
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // BtnEditar
+            // 
+            this.BtnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.BtnEditar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.BtnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnEditar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BtnEditar.BorderRadius = 20;
+            this.BtnEditar.BorderSize = 0;
+            this.BtnEditar.FlatAppearance.BorderSize = 0;
+            this.BtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEditar.ForeColor = System.Drawing.Color.White;
+            this.BtnEditar.Location = new System.Drawing.Point(1053, 64);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(80, 40);
+            this.BtnEditar.TabIndex = 7;
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.TextColor = System.Drawing.Color.White;
+            this.BtnEditar.UseVisualStyleBackColor = false;
+            this.BtnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // btnAnadir
             // 
-            this.btnAnadir.Location = new System.Drawing.Point(1029, 81);
+            this.btnAnadir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnAnadir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.btnAnadir.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAnadir.BorderRadius = 20;
+            this.btnAnadir.BorderSize = 0;
+            this.btnAnadir.FlatAppearance.BorderSize = 0;
+            this.btnAnadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnadir.ForeColor = System.Drawing.Color.White;
+            this.btnAnadir.Location = new System.Drawing.Point(967, 64);
             this.btnAnadir.Name = "btnAnadir";
-            this.btnAnadir.Size = new System.Drawing.Size(75, 23);
-            this.btnAnadir.TabIndex = 1;
+            this.btnAnadir.Size = new System.Drawing.Size(80, 40);
+            this.btnAnadir.TabIndex = 8;
             this.btnAnadir.Text = "Añadir";
-            this.btnAnadir.UseVisualStyleBackColor = true;
+            this.btnAnadir.TextColor = System.Drawing.Color.White;
+            this.btnAnadir.UseVisualStyleBackColor = false;
             this.btnAnadir.Click += new System.EventHandler(this.btnAnadir_Click);
             // 
-            // btnEditar
+            // label1
             // 
-            this.btnEditar.Location = new System.Drawing.Point(1110, 81);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // buttonEliminar
-            // 
-            this.buttonEliminar.Location = new System.Drawing.Point(1191, 81);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminar.TabIndex = 3;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
-            // 
-            // btnatras
-            // 
-            this.btnatras.Location = new System.Drawing.Point(51, 30);
-            this.btnatras.Name = "btnatras";
-            this.btnatras.Size = new System.Drawing.Size(75, 23);
-            this.btnatras.TabIndex = 4;
-            this.btnatras.Text = "Atras";
-            this.btnatras.UseVisualStyleBackColor = true;
-            this.btnatras.Click += new System.EventHandler(this.btnatras_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1050, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 16);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "label1";
             // 
             // UsuariosLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(1294, 605);
-            this.Controls.Add(this.btnatras);
-            this.Controls.Add(this.buttonEliminar);
-            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAnadir);
+            this.Controls.Add(this.BtnEditar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.groupBox1);
             this.Name = "UsuariosLocal";
             this.Text = "Locales";
@@ -278,6 +330,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -285,12 +338,8 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnAnadir;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.BindingSource bindingSourceUsers;
         private System.Windows.Forms.DataGridView dgvUsuarios;
-        private System.Windows.Forms.Button btnatras;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn correo;
@@ -302,5 +351,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn horarioApertura;
         private System.Windows.Forms.DataGridViewTextBoxColumn horarioCierre;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoracion;
+        private btnRedondeado btnAtras;
+        private btnRedondeado btnEliminar;
+        private btnRedondeado BtnEditar;
+        private btnRedondeado btnAnadir;
+        private System.Windows.Forms.Label label1;
     }
 }

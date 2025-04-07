@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardarLocal = new System.Windows.Forms.Button();
             this.tbDireccion = new System.Windows.Forms.TextBox();
             this.tbTelefono = new System.Windows.Forms.TextBox();
             this.tbCorreo = new System.Windows.Forms.TextBox();
@@ -46,27 +44,10 @@
             this.tbContra = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnCancelar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnGuardar = new WindowsFormsAppArmonii.btnRedondeado();
+            this.btnContrasena = new WindowsFormsAppArmonii.btnRedondeado();
             this.SuspendLayout();
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(674, 415);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 25;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardarLocal
-            // 
-            this.btnGuardarLocal.Location = new System.Drawing.Point(565, 413);
-            this.btnGuardarLocal.Name = "btnGuardarLocal";
-            this.btnGuardarLocal.Size = new System.Drawing.Size(76, 25);
-            this.btnGuardarLocal.TabIndex = 24;
-            this.btnGuardarLocal.Text = "Guardar";
-            this.btnGuardarLocal.UseVisualStyleBackColor = true;
-            this.btnGuardarLocal.Click += new System.EventHandler(this.btnGuardarLocal_Click);
             // 
             // tbDireccion
             // 
@@ -197,11 +178,72 @@
             this.label7.TabIndex = 38;
             this.label7.Text = "Contraseña";
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnCancelar.BackgroundColor = System.Drawing.Color.OrangeRed;
+            this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BorderRadius = 20;
+            this.btnCancelar.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(632, 402);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(108, 40);
+            this.btnCancelar.TabIndex = 45;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextColor = System.Drawing.Color.White;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnGuardar.BackgroundColor = System.Drawing.Color.OrangeRed;
+            this.btnGuardar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGuardar.BorderRadius = 20;
+            this.btnGuardar.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(516, 402);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(110, 40);
+            this.btnGuardar.TabIndex = 44;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextColor = System.Drawing.Color.White;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardarLocal_Click);
+            // 
+            // btnContrasena
+            // 
+            this.btnContrasena.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnContrasena.BackgroundColor = System.Drawing.Color.OrangeRed;
+            this.btnContrasena.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnContrasena.BorderRadius = 20;
+            this.btnContrasena.BorderSize = 0;
+            this.btnContrasena.FlatAppearance.BorderSize = 0;
+            this.btnContrasena.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContrasena.ForeColor = System.Drawing.Color.White;
+            this.btnContrasena.Location = new System.Drawing.Point(350, 402);
+            this.btnContrasena.Name = "btnContrasena";
+            this.btnContrasena.Size = new System.Drawing.Size(160, 40);
+            this.btnContrasena.TabIndex = 43;
+            this.btnContrasena.Text = "Restablecer la contraseña";
+            this.btnContrasena.TextColor = System.Drawing.Color.White;
+            this.btnContrasena.UseVisualStyleBackColor = false;
+            this.btnContrasena.Click += new System.EventHandler(this.btnContrasena_Click);
+            // 
             // anadirLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(805, 454);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnContrasena);
             this.Controls.Add(this.tbRepiteContra);
             this.Controls.Add(this.tbContra);
             this.Controls.Add(this.label4);
@@ -218,8 +260,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnGuardarLocal);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "anadirLocal";
             this.Text = "anadirLocal";
             this.ResumeLayout(false);
@@ -228,9 +269,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardarLocal;
         private System.Windows.Forms.TextBox tbDireccion;
         private System.Windows.Forms.TextBox tbTelefono;
         private System.Windows.Forms.TextBox tbCorreo;
@@ -247,5 +285,8 @@
         private System.Windows.Forms.TextBox tbContra;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
+        private btnRedondeado btnContrasena;
+        private btnRedondeado btnGuardar;
+        private btnRedondeado btnCancelar;
     }
 }

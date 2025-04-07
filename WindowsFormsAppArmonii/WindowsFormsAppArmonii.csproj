@@ -86,6 +86,9 @@
     <Compile Include="anadirMusico.Designer.cs">
       <DependentUpon>anadirMusico.cs</DependentUpon>
     </Compile>
+    <Compile Include="btnRedondeado.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Calendario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +102,6 @@
       <DependentUpon>Comenzar.cs</DependentUpon>
     </Compile>
     <Compile Include="Local.cs" />
-    <Compile Include="LocalesMapa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LocalesMapa.Designer.cs">
-      <DependentUpon>LocalesMapa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,11 +114,11 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MusicoMap.cs">
+    <Compile Include="Mapa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MusicoMap.Designer.cs">
-      <DependentUpon>MusicoMap.cs</DependentUpon>
+    <Compile Include="Mapa.Designer.cs">
+      <DependentUpon>Mapa.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminOrm.cs" />
     <Compile Include="Models\ArmoniiEntities.Context.cs">
@@ -176,12 +173,6 @@
     <Compile Include="Models\Valoracion.cs">
       <DependentUpon>ArmoniiEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="MenuMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuMap.Designer.cs">
-      <DependentUpon>MenuMap.cs</DependentUpon>
-    </Compile>
     <Compile Include="Musicos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,20 +212,14 @@
     <EmbeddedResource Include="Comenzar.resx">
       <DependentUpon>Comenzar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LocalesMapa.resx">
-      <DependentUpon>LocalesMapa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MusicoMap.resx">
-      <DependentUpon>MusicoMap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuMap.resx">
-      <DependentUpon>MenuMap.cs</DependentUpon>
+    <EmbeddedResource Include="Mapa.resx">
+      <DependentUpon>Mapa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -304,6 +289,8 @@
     <Content Include="Resources\agregar-puntero.png" />
     <Content Include="Resources\eliminar-puntero-pequeño.png" />
     <Content Include="Resources\eliminar-puntero.png" />
+    <None Include="Resources\icons8-mapa-50.png" />
+    <None Include="Resources\unnamed.png" />
     <None Include="Resources\icons8-música-60.png" />
     <None Include="Resources\icons8-edificio-48 %281%29.png" />
     <None Include="Resources\icons8-calendario-50.png" />

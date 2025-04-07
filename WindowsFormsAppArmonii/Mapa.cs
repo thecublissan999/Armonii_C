@@ -14,11 +14,13 @@ using GMap.NET.MapProviders;
 using static WindowsFormsAppArmonii.Models.UsuarioOrm;
 using WindowsFormsAppArmonii.Models;
 using System.Drawing.Drawing2D;
+using WindowsFormsAppArmonii;
+using System.Runtime.CompilerServices;
 
 
 namespace LocationMap
 {
-    public partial class MusicoMap : Form
+    public partial class Mapa : Form
     {
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
@@ -28,13 +30,17 @@ namespace LocationMap
         int filaSeleccionada = 0;
         double LatInicial = 41.3851; // Coordenadas de Barcelona
         double LngInicial = 2.1734;
+        UsuarioAdmin usu = null;
+        bool isLocal = false;
 
-        public MusicoMap()
+        public Mapa(UsuarioAdmin usuario)
         {
+            usu = usuario;
             InitializeComponent();
             CenterToScreen();
             gMapControl1_Load(this, EventArgs.Empty);
             LoadMusicians();
+            label2.Text = "Bienvenido/a, " + usu.nombre + "!";
         }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -63,14 +69,26 @@ namespace LocationMap
 
         private void LoadMusicians()
         {
-            var musicians = ObtenerUsuarioMusico();
-
-            cbMusicos.Items.Clear();
-            cbMusicos.Items.Add(new UsuarioMusico { nombre = "Seleccionar local", latitud = 0, longitud = 0, correo = "", telefono = "", genero = "" });
-            cbMusicos.Items.AddRange(musicians.ToArray());
-            //cbLocales.DataSource = locales;
-            cbMusicos.DisplayMember = "nombre";
-            cbMusicos.SelectedIndex = 0;
+            cargarCB();
+            
+        }
+        private void cargarCB()
+        {
+            cbUsuarios.Items.Clear();
+            if (isLocal)
+            {
+                var locales = ObtenerUsuarioLocal();
+                cbUsuarios.Items.Add(new UsuarioLocal { nombre = "Seleccionar local", latitud = 0, longitud = 0, correo = "", telefono = "", tipo_local = "" });
+                cbUsuarios.Items.AddRange(locales.ToArray());
+            }
+            else
+            {
+                var musicians = ObtenerUsuarioMusico();
+                cbUsuarios.Items.Add(new UsuarioMusico { nombre = "Seleccionar musico", latitud = 0, longitud = 0, correo = "", telefono = "", genero = "" });
+                cbUsuarios.Items.AddRange(musicians.ToArray());
+            }
+            cbUsuarios.DisplayMember = "nombre";
+            cbUsuarios.SelectedIndex = 0;
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
@@ -92,7 +110,52 @@ namespace LocationMap
 
         private void comboBoxMusics_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbMusicos.SelectedIndex == 0)
+            if (isLocal)
+            {
+                if (cbUsuarios.SelectedIndex == 0)
+                {
+                    // Limpiar los labels si se selecciona "Seleccionar local"
+                    labelNombre.Text = "Nombre:";
+                    labelCorreo.Text = "Correo:";
+                    labelTelefono.Text = "Teléfono:";
+                    labelGenero.Text = "Tipo de local:";
+                    return;
+                }
+                var selectedLocal = (UsuarioLocal)cbUsuarios.SelectedItem;
+
+                if (selectedLocal.longitud != null)
+                {
+                    double lat = (double)selectedLocal.latitud;
+                    double lng = (double)selectedLocal.longitud;
+
+                    markerOverlay.Markers.Clear();
+
+                    var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
+                    markerOverlay.Markers.Add(marker);
+
+                    gMapControl1.Position = new PointLatLng(lat, lng);
+                }
+                else
+                {
+                    MessageBox.Show("El músico no tiene coordenadas asignadas.");
+                }
+
+
+
+                // Rellenar los labels con los datos del local seleccionado
+                labelNombre.Text = "Nombre: " + selectedLocal.nombre;
+                labelCorreo.Text = "Correo: " + selectedLocal.correo;
+                labelTelefono.Text = "Teléfono: " + selectedLocal.telefono;
+                labelGenero.Text = "Tipo de local: " + selectedLocal.tipo_local;
+            }
+            else
+            {
+                mapaMusico();
+            }
+        }
+        private void mapaMusico()
+        {
+            if (cbUsuarios.SelectedIndex == 0)
             {
                 // Limpiar los labels si se selecciona "Seleccionar músico"
                 labelNombre.Text = "Nombre:";
@@ -103,7 +166,7 @@ namespace LocationMap
                 return;
             }
 
-            var selectedMusician = (UsuarioMusico)cbMusicos.SelectedItem;
+            var selectedMusician = (UsuarioMusico)cbUsuarios.SelectedItem;
             if (selectedMusician.latitud != null)
             {
                 double lat = (double)selectedMusician.latitud;
@@ -149,9 +212,38 @@ namespace LocationMap
             return polygon;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            WindowsFormsAppArmonii.Menu nuevoFormulario = new WindowsFormsAppArmonii.Menu(usu);
+            nuevoFormulario.Show();
+            this.Close();
+        }
+
+        private void btnLocales_Click(object sender, EventArgs e)
+        {
+            btnLocales.BackColor = Color.Silver;
+            btnMusicos.BackColor = Color.FromArgb(241, 88, 12);
+            isLocal = true;
+            label1.Text = "Local";
+            btnMusicos.Enabled = true;
+            btnLocales.Enabled = false;
+            btnMusicos.ForeColor = Color.White;
+            btnLocales.ForeColor = Color.Black;
+            cargarCB();
+        }
+
+        private void btnMusicos_Click(object sender, EventArgs e)
+        {
+            btnLocales.BackColor = Color.FromArgb(241, 88, 12);
+            btnMusicos.BackColor = Color.Silver;
+            isLocal = false;
+            label1.Text = "Musico";
+            btnMusicos.Enabled = false;
+            btnLocales.Enabled = true;
+            btnLocales.ForeColor = Color.White;
+            btnMusicos.ForeColor = Color.Black;
+            cargarCB();
         }
     }
 

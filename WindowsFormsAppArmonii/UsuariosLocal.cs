@@ -23,10 +23,11 @@ namespace WindowsFormsAppArmonii
             InitializeComponent();
             bindingSourceUsers.DataSource = ObtenerUsuarioLocal();
             this.usuarioSeleccionado = usuarioSeleccionado;
+            label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
             if (usuarioSeleccionado.permiso == 3)
             {
                 btnAnadir.Visible = false; // Ocultar el botón de añadir
-                buttonEliminar.Visible = false; // Mostrar el botón de eliminar
+                btnEliminar.Visible = false; // Mostrar el botón de eliminar
             }
         }
 
@@ -106,7 +107,7 @@ namespace WindowsFormsAppArmonii
             }
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado alguna fila
             if (dgvUsuarios.SelectedRows.Count > 0)
@@ -164,6 +165,6 @@ namespace WindowsFormsAppArmonii
             {
                 Console.WriteLine($"Error al dibujar el fondo: {ex.Message}");
             }
-        }
+        }        
     }
 }
