@@ -25,6 +25,8 @@ namespace WindowsFormsAppArmonii
             bsAdmin.DataSource = ObtenerAdmins();
             usuarioSeleccionado = usuario;
             label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
+            dgvAdmins.DataBindingComplete += dgvAdmins_DataBindingComplete;
+
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -34,7 +36,10 @@ namespace WindowsFormsAppArmonii
             nuevoFormulario.Show();
             this.Close();
         }
-
+        private void dgvAdmins_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvAdmins.ClearSelection();
+        }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             try
@@ -164,6 +169,11 @@ namespace WindowsFormsAppArmonii
             {
                 MessageBox.Show("Por favor, selecciona un usuario para eliminar.");
             }
+        }
+
+        private void dgvAdmins_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

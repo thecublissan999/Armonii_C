@@ -29,6 +29,12 @@ namespace WindowsFormsAppArmonii
                 btnAnadir.Visible = false; // Ocultar el botón de añadir
                 btnEliminar.Visible = false; // Mostrar el botón de eliminar
             }
+            dgvUsuarios.DataBindingComplete += dgvUsuarios_DataBindingComplete;
+
+        }
+        private void dgvUsuarios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvUsuarios.ClearSelection();
         }
 
         private void btnatras_Click(object sender, EventArgs e)

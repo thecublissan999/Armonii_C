@@ -188,9 +188,9 @@
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(632, 402);
+            this.btnCancelar.Location = new System.Drawing.Point(632, 396);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(108, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(108, 46);
             this.btnCancelar.TabIndex = 45;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextColor = System.Drawing.Color.White;
@@ -207,9 +207,9 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(516, 402);
+            this.btnGuardar.Location = new System.Drawing.Point(516, 396);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 40);
+            this.btnGuardar.Size = new System.Drawing.Size(110, 46);
             this.btnGuardar.TabIndex = 44;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextColor = System.Drawing.Color.White;
@@ -226,9 +226,9 @@
             this.btnContrasena.FlatAppearance.BorderSize = 0;
             this.btnContrasena.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContrasena.ForeColor = System.Drawing.Color.White;
-            this.btnContrasena.Location = new System.Drawing.Point(350, 402);
+            this.btnContrasena.Location = new System.Drawing.Point(342, 396);
             this.btnContrasena.Name = "btnContrasena";
-            this.btnContrasena.Size = new System.Drawing.Size(160, 40);
+            this.btnContrasena.Size = new System.Drawing.Size(168, 46);
             this.btnContrasena.TabIndex = 43;
             this.btnContrasena.Text = "Restablecer la contraseña";
             this.btnContrasena.TextColor = System.Drawing.Color.White;

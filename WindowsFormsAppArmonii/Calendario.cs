@@ -23,11 +23,19 @@ namespace WindowsFormsAppArmonii
             InitializeComponent();
             this.usuarioSeleccionado = usuarioSeleccionado;
             label9.Text = "Bienvenido/a, " +usuarioSeleccionado.nombre + "!";
+
+            dgvCalendario.DataBindingComplete += dgvCalendario_DataBindingComplete;
+
         }
 
         private void CalendarioPrueba_Load(object sender, EventArgs e) 
         {
             mostrarDias(DateTime.Now.Month, DateTime.Now.Year);
+        }
+
+        private void dgvCalendario_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvCalendario.ClearSelection();
         }
         protected override void OnPaintBackground(PaintEventArgs e)
         {

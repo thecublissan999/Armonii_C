@@ -25,6 +25,8 @@ namespace WindowsFormsAppArmonii
             bindingSource1.DataSource = ObtenerUsuarioMusico();
             this.usuarioSeleccionado = usuarioSeleccionado;
             label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
+            dgvUsuarios.DataBindingComplete += dgvUsuarios_DataBindingComplete;
+
         }
 
         private void btnatras_Click(object sender, EventArgs e)
@@ -33,7 +35,10 @@ namespace WindowsFormsAppArmonii
             nuevoFormulario.Show();
             this.Close();
         }
-
+        private void dgvUsuarios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvUsuarios.ClearSelection();
+        }
         private void btnAnadir_Click(object sender, EventArgs e)
         {
             usuarioMusicoSeleccionado = null;

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -46,11 +48,11 @@
             this.fechaRegistroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valoracionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAnadir = new WindowsFormsAppArmonii.btnRedondeado();
             this.BtnEditar = new WindowsFormsAppArmonii.btnRedondeado();
             this.btnEliminar = new WindowsFormsAppArmonii.btnRedondeado();
             this.btnAtras = new WindowsFormsAppArmonii.btnRedondeado();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -78,6 +80,18 @@
             this.dgvUsuarios.AllowUserToDeleteRows = false;
             this.dgvUsuarios.AllowUserToOrderColumns = true;
             this.dgvUsuarios.AutoGenerateColumns = false;
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -95,12 +109,16 @@
             this.valoracionDataGridViewTextBoxColumn});
             this.dgvUsuarios.DataSource = this.bindingSource1;
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsuarios.EnableHeadersVisualStyles = false;
+            this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 18);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(12)))));
+            this.dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.RowTemplate.Height = 24;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(1207, 453);
@@ -114,23 +132,24 @@
             this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 47;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 125;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
             this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
             this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
             this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 82;
+            this.nombreDataGridViewTextBoxColumn.Width = 84;
             // 
             // apellido
             // 
             this.apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.apellido.DataPropertyName = "apellido";
-            this.apellido.HeaderText = "apellido";
+            this.apellido.HeaderText = "Apellido";
             this.apellido.MinimumWidth = 6;
             this.apellido.Name = "apellido";
             this.apellido.ReadOnly = true;
@@ -140,17 +159,17 @@
             // 
             this.correoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.correoDataGridViewTextBoxColumn.DataPropertyName = "correo";
-            this.correoDataGridViewTextBoxColumn.HeaderText = "correo";
+            this.correoDataGridViewTextBoxColumn.HeaderText = "Correo";
             this.correoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
             this.correoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.correoDataGridViewTextBoxColumn.Width = 75;
+            this.correoDataGridViewTextBoxColumn.Width = 76;
             // 
             // apodo
             // 
             this.apodo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.apodo.DataPropertyName = "apodo";
-            this.apodo.HeaderText = "apodo";
+            this.apodo.HeaderText = "Apodo";
             this.apodo.MinimumWidth = 6;
             this.apodo.Name = "apodo";
             this.apodo.ReadOnly = true;
@@ -160,7 +179,7 @@
             // 
             this.edad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.edad.DataPropertyName = "edad";
-            this.edad.HeaderText = "edad";
+            this.edad.HeaderText = "Edad";
             this.edad.MinimumWidth = 6;
             this.edad.Name = "edad";
             this.edad.ReadOnly = true;
@@ -170,11 +189,11 @@
             // 
             this.telefonoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "telefono";
+            this.telefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
             this.telefonoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
             this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.telefonoDataGridViewTextBoxColumn.Width = 84;
+            this.telefonoDataGridViewTextBoxColumn.Width = 89;
             // 
             // contrasenyaDataGridViewTextBoxColumn
             // 
@@ -184,33 +203,34 @@
             this.contrasenyaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.contrasenyaDataGridViewTextBoxColumn.Name = "contrasenyaDataGridViewTextBoxColumn";
             this.contrasenyaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.contrasenyaDataGridViewTextBoxColumn.Width = 110;
+            this.contrasenyaDataGridViewTextBoxColumn.Visible = false;
+            this.contrasenyaDataGridViewTextBoxColumn.Width = 125;
             // 
             // genero
             // 
             this.genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.genero.DataPropertyName = "genero";
-            this.genero.HeaderText = "genero";
+            this.genero.HeaderText = "Genero";
             this.genero.MinimumWidth = 6;
             this.genero.Name = "genero";
             this.genero.ReadOnly = true;
-            this.genero.Width = 79;
+            this.genero.Width = 80;
             // 
             // generoMusical
             // 
             this.generoMusical.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.generoMusical.DataPropertyName = "generoMusical";
-            this.generoMusical.HeaderText = "generoMusical";
+            this.generoMusical.HeaderText = "Genero musical";
             this.generoMusical.MinimumWidth = 6;
             this.generoMusical.Name = "generoMusical";
             this.generoMusical.ReadOnly = true;
-            this.generoMusical.Width = 125;
+            this.generoMusical.Width = 118;
             // 
             // biografia
             // 
             this.biografia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.biografia.DataPropertyName = "biografia";
-            this.biografia.HeaderText = "biografia";
+            this.biografia.HeaderText = "Biografia";
             this.biografia.MinimumWidth = 6;
             this.biografia.Name = "biografia";
             this.biografia.ReadOnly = true;
@@ -220,21 +240,20 @@
             // 
             this.fechaRegistroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechaRegistroDataGridViewTextBoxColumn.DataPropertyName = "fechaRegistro";
-            this.fechaRegistroDataGridViewTextBoxColumn.HeaderText = "fechaRegistro";
+            this.fechaRegistroDataGridViewTextBoxColumn.HeaderText = "Fecha registro";
             this.fechaRegistroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fechaRegistroDataGridViewTextBoxColumn.Name = "fechaRegistroDataGridViewTextBoxColumn";
             this.fechaRegistroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fechaRegistroDataGridViewTextBoxColumn.Width = 120;
+            this.fechaRegistroDataGridViewTextBoxColumn.Width = 111;
             // 
             // valoracionDataGridViewTextBoxColumn
             // 
             this.valoracionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valoracionDataGridViewTextBoxColumn.DataPropertyName = "valoracion";
-            this.valoracionDataGridViewTextBoxColumn.HeaderText = "valoracion";
+            this.valoracionDataGridViewTextBoxColumn.HeaderText = "Valoracion";
             this.valoracionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.valoracionDataGridViewTextBoxColumn.Name = "valoracionDataGridViewTextBoxColumn";
             this.valoracionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.valoracionDataGridViewTextBoxColumn.Width = 99;
             // 
             // dataGridView1
             // 
@@ -246,6 +265,18 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1207, 453);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1050, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "label1";
             // 
             // btnAnadir
             // 
@@ -288,8 +319,8 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.Red;
-            this.btnEliminar.BackgroundColor = System.Drawing.Color.Red;
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.btnEliminar.BorderRadius = 20;
             this.btnEliminar.BorderSize = 0;
@@ -324,17 +355,6 @@
             this.btnAtras.UseVisualStyleBackColor = false;
             this.btnAtras.Click += new System.EventHandler(this.btnatras_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1050, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 16);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "label1";
-            // 
             // UsuariosMusicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -348,6 +368,7 @@
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.groupBox1);
             this.Name = "UsuariosMusicos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsuariosMusicos";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -364,6 +385,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private btnRedondeado btnAnadir;
+        private btnRedondeado BtnEditar;
+        private btnRedondeado btnEliminar;
+        private btnRedondeado btnAtras;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
@@ -377,10 +403,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn biografia;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaRegistroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoracionDataGridViewTextBoxColumn;
-        private btnRedondeado btnAnadir;
-        private btnRedondeado BtnEditar;
-        private btnRedondeado btnEliminar;
-        private btnRedondeado btnAtras;
-        private System.Windows.Forms.Label label1;
     }
 }
