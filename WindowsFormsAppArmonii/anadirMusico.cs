@@ -115,6 +115,7 @@ namespace WindowsFormsAppArmonii
             // Limpiar el ListBox antes de llenarlo (por si ya tiene elementos)
             lbGenerosMusicales.Items.Clear();
 
+            cbGenero.Items.Add("Seleccione el genero");
             cbGenero.Items.Add("Hombre");
             cbGenero.Items.Add("Mujer");
             cbGenero.Items.Add("Otros");
@@ -311,6 +312,14 @@ namespace WindowsFormsAppArmonii
                 return; // Salir del método si la edad no es válida
             }
 
+
+            bool validarCorreo = UsuarioOrm.ComprobarCorreo(tbCorreo.Text);
+            if (validarCorreo)
+            {
+                MessageBox.Show("El correo electrónico ya está en uso. Por favor, use otro.");
+                return;
+            }
+
             // Crear un objeto UsuarioMusico
             UsuarioMusico usuarioMusico = new UsuarioMusico();
             Usuario usuario = new Usuario();
@@ -395,6 +404,12 @@ namespace WindowsFormsAppArmonii
             {
                 MessageBox.Show("Error al enviar el correo: " + ex.Message);
             }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.ActiveControl = null; // Ningún control tendrá el foco inicial
         }
     }
 }

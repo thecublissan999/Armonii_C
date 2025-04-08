@@ -310,6 +310,8 @@
             this.Controls.Add(this.btnMusic);
             this.Controls.Add(this.btnLocal);
             this.Controls.Add(this.btnCerrarSesio);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";

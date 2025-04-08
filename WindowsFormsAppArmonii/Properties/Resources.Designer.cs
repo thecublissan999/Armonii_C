@@ -93,6 +93,26 @@ namespace WindowsFormsAppArmonii.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_flecha_30__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-flecha-30 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_flecha_30__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-flecha-30 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_mapa_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-mapa-50", resourceCulture);

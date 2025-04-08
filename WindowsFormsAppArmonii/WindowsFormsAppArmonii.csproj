@@ -289,6 +289,8 @@
     <Content Include="Resources\agregar-puntero.png" />
     <Content Include="Resources\eliminar-puntero-pequeño.png" />
     <Content Include="Resources\eliminar-puntero.png" />
+    <None Include="Resources\icons8-flecha-30 %281%29.png" />
+    <None Include="Resources\icons8-flecha-30 %282%29.png" />
     <None Include="Resources\icons8-mapa-50.png" />
     <None Include="Resources\unnamed.png" />
     <None Include="Resources\icons8-música-60.png" />

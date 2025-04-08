@@ -26,7 +26,12 @@ namespace WindowsFormsAppArmonii
             this.usuarioSeleccionado = usuarioSeleccionado;
             label1.Text = "Bienvenido/a, " + usuarioSeleccionado.nombre + "!";
             dgvUsuarios.DataBindingComplete += dgvUsuarios_DataBindingComplete;
-
+            if (usuarioSeleccionado.permiso == 3)
+            {
+                btnAnadir.Visible = false; // Ocultar el botón de añadir
+                btnEliminar.Visible = false; // Mostrar el botón de eliminar
+                BtnEditar.Location = new Point(BtnEditar.Location.X + 65, BtnEditar.Location.Y);
+            }
         }
 
         private void btnatras_Click(object sender, EventArgs e)

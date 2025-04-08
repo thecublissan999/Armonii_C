@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsAppArmonii.Models;
 using static WindowsFormsAppArmonii.Models.AdminOrm;
-using static WindowsFormsAppArmonii.Models.UsuarioOrm;
+using static WindowsFormsAppArmonii.Models.UsuarioAdminOrm;
 
 namespace WindowsFormsAppArmonii
 {

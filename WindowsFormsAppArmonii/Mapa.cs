@@ -112,46 +112,51 @@ namespace LocationMap
         {
             if (isLocal)
             {
-                if (cbUsuarios.SelectedIndex == 0)
-                {
-                    // Limpiar los labels si se selecciona "Seleccionar local"
-                    labelNombre.Text = "Nombre:";
-                    labelCorreo.Text = "Correo:";
-                    labelTelefono.Text = "Teléfono:";
-                    labelGenero.Text = "Tipo de local:";
-                    return;
-                }
-                var selectedLocal = (UsuarioLocal)cbUsuarios.SelectedItem;
-
-                if (selectedLocal.longitud != null)
-                {
-                    double lat = (double)selectedLocal.latitud;
-                    double lng = (double)selectedLocal.longitud;
-
-                    markerOverlay.Markers.Clear();
-
-                    var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
-                    markerOverlay.Markers.Add(marker);
-
-                    gMapControl1.Position = new PointLatLng(lat, lng);
-                }
-                else
-                {
-                    MessageBox.Show("El músico no tiene coordenadas asignadas.");
-                }
-
-
-
-                // Rellenar los labels con los datos del local seleccionado
-                labelNombre.Text = "Nombre: " + selectedLocal.nombre;
-                labelCorreo.Text = "Correo: " + selectedLocal.correo;
-                labelTelefono.Text = "Teléfono: " + selectedLocal.telefono;
-                labelGenero.Text = "Tipo de local: " + selectedLocal.tipo_local;
+                mapaLocal();
             }
             else
             {
                 mapaMusico();
             }
+        }
+        private void mapaLocal()
+        {
+            if (cbUsuarios.SelectedIndex == 0)
+            {
+                // Limpiar los labels si se selecciona "Seleccionar local"
+                labelNombre.Text = "Nombre:";
+                labelCorreo.Text = "Correo:";
+                labelTelefono.Text = "Teléfono:";
+                labelGenero.Text = "Tipo de local:";
+                return;
+            }
+            var selectedLocal = (UsuarioLocal)cbUsuarios.SelectedItem;
+
+            if (selectedLocal.longitud != null)
+            {
+                double lat = (double)selectedLocal.latitud;
+                double lng = (double)selectedLocal.longitud;
+
+                markerOverlay.Markers.Clear();
+
+                var circle = CreateCircle(lat, lng, 5000); // 5 km
+                var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
+                markerOverlay.Markers.Add(marker);
+
+                gMapControl1.Position = new PointLatLng(lat, lng);
+            }
+            else
+            {
+                MessageBox.Show("El local no tiene coordenadas asignadas.");
+            }
+
+
+
+            // Rellenar los labels con los datos del local seleccionado
+            labelNombre.Text = "Nombre: " + selectedLocal.nombre;
+            labelCorreo.Text = "Correo: " + selectedLocal.correo;
+            labelTelefono.Text = "Teléfono: " + selectedLocal.telefono;
+            labelGenero.Text = "Tipo de local: " + selectedLocal.tipo_local;
         }
         private void mapaMusico()
         {

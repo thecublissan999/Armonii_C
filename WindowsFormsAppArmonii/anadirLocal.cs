@@ -46,7 +46,11 @@ namespace WindowsFormsAppArmonii
                 btnContrasena.Visible = false; // Ocultar el botón si no hay local seleccionado
             }
         }
-
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.ActiveControl = null; // Ningún control tendrá el foco inicial
+        }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             try
@@ -202,6 +206,12 @@ namespace WindowsFormsAppArmonii
             if (string.IsNullOrWhiteSpace(tbDireccion.Text) || tbDireccion.Text == "Dirección")
             {
                 MessageBox.Show("Por favor, ingrese la dirección.");
+                return;
+            }
+            bool validarCorreo = UsuarioOrm.ComprobarCorreo(tbCorreo.Text);
+            if (validarCorreo)
+            {
+                MessageBox.Show("El correo electrónico ya está en uso. Por favor, use otro.");
                 return;
             }
 

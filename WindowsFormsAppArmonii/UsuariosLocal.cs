@@ -28,6 +28,7 @@ namespace WindowsFormsAppArmonii
             {
                 btnAnadir.Visible = false; // Ocultar el botón de añadir
                 btnEliminar.Visible = false; // Mostrar el botón de eliminar
+                BtnEditar.Location = new Point(BtnEditar.Location.X + 65, BtnEditar.Location.Y );
             }
             dgvUsuarios.DataBindingComplete += dgvUsuarios_DataBindingComplete;
 

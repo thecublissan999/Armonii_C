@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using WindowsFormsAppArmonii.Models;
 using static WindowsFormsAppArmonii.Models.AdminOrm;
 using static WindowsFormsAppArmonii.Models.PermisosOrm;
-using static WindowsFormsAppArmonii.Models.UsuarioOrm;
+using static WindowsFormsAppArmonii.Models.UsuarioAdminOrm;
 
 namespace WindowsFormsAppArmonii
 {
@@ -129,7 +129,11 @@ namespace WindowsFormsAppArmonii
                 }
             };
         }
-
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.ActiveControl = null; // Ningún control tendrá el foco inicial
+        }
 
         // Método para llenar los TextBox de forma segura
         private void FillTextBox(TextBox textBox, string value, string hintText)
@@ -203,7 +207,7 @@ namespace WindowsFormsAppArmonii
                     admin.contrasenya = tbContra.Text;
                     admin.permiso = cbPermisos.Text;
 
-                    UsuarioOrm.ModificarAdmin(admin);
+                    UsuarioAdminOrm.ModificarAdmin(admin);
                     MessageBox.Show("Músico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -240,7 +244,12 @@ namespace WindowsFormsAppArmonii
                 MessageBox.Show("Por favor, seleccione un permiso válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            bool correoValido = UsuarioAdminOrm.ComprobarCorreo(tbCorreo.Text);
+            if (correoValido)
+            {
+                MessageBox.Show("El correo ya está en uso. Por favor, use otro correo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Obtener el nombre del permiso seleccionado
             string permisoSeleccionadoNombre = cbPermisos.SelectedItem.ToString();
 
@@ -268,7 +277,7 @@ namespace WindowsFormsAppArmonii
             };
 
             // Llamar al método para crear el administrador en la base de datos
-            UsuarioOrm.CrearAdmin(admin);
+            UsuarioAdminOrm.CrearAdmin(admin);
 
             MessageBox.Show("Administrador guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close(); // Cerrar el formulario actual
